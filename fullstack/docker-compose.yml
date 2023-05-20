@@ -1,19 +1,7 @@
 version: '3'
 services:
 
-  node.api.exchange:
-    build: ./node_api_exchange
-    volumes:
-      - ./node_api_exchange:/usr/src/app
-    command: sh -c " npm install && npm start "
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
-    networks:
-      - pv121_network
-    environment:
-      - NAME=NodeApiExchange
-    env_file:
-      - .env
+
 
   node.api:
     build: ./node_api
@@ -33,9 +21,9 @@ services:
 
 
   front.vue:
-    build: ./front_vue
+    build: ./vue_front
     volumes:
-      - ./front_vue:/usr/src/app
+      - ./vue_front:/usr/src/app
     command: sh -c " npm install && npm start "
     extra_hosts:
       - 'host.docker.internal:host-gateway'
@@ -62,7 +50,7 @@ services:
     depends_on:
       - front.vue
       - node.api
-      - node.api.exchange
+
 
 
 networks:
