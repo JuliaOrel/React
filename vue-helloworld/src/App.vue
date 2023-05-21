@@ -1,16 +1,16 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import MyFirstComponent from "@/components/first/MyFirstComponent.vue";
-import MyHeader from "@/components/layouts/MyHeader.vue";
-import MyFooter from "@/components/layouts/MyFooter.vue";
+
+
+import Mynavbar from "@/components/adminlte/Mynavbar.vue";
+import MyCard from "@/components/adminlte/MyCard.vue";
+import Mysmallbox from "@/components/adminlte/Mysmallbox.vue";
 </script>
 
 <template>
 
-<MyHeader></MyHeader>
-    <MyFirstComponent></MyFirstComponent>
-<MyFooter></MyFooter>
+    <Mynavbar></Mynavbar>
+    <MyCard></MyCard>
+    <Mysmallbox></Mysmallbox>
 
 </template>
 
