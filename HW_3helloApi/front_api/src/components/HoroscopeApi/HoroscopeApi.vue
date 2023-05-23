@@ -9,9 +9,8 @@ horoscopeStore.getHoroscope()
 </script>
 
 <template>
-<h1>{{horoscopeStore.data.description}}</h1>
-    <p>{{horoscopeStore.data.planet}}</p>
-    <p>{{horoscopeStore.data.sign}}</p>
+<h1>{{horoscopeStore.data}}</h1>
+
 </template>
 
 <style scoped>
