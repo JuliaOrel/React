@@ -2,6 +2,7 @@ import {defineStore} from "pinia";
 import {toast} from "vue3-toastify";
 import myLog from "@/services/myLog";
 import myLocalStorage from "@/services/myLocalStorage";
+import myFetch from "@/services/myFetch";
 
 export  const useExchangeApiStore = defineStore('exchangeApi',{
     state: () => ({
@@ -16,7 +17,7 @@ export  const useExchangeApiStore = defineStore('exchangeApi',{
             let d = this.whenLoad
             if (d === null) {
                 this.isPreload = true
-                fetch('/api/exchange')
+                myFetch('/api/exchange')
                     .then(res => res.json())
                     .then(newExchange => {
                         toast.success('get')

@@ -1,5 +1,6 @@
-import myLog from "@/services/myLog";
+
 import {toast} from "vue3-toastify";
+import myLog from "@/services/MyLog";
 
 export default function (url, options = {}) {
 

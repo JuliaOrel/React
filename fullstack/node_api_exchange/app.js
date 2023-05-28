@@ -1,7 +1,7 @@
 let express=require('express');
 let app=express();
 const axios=require('axios');
-const url='https://v6.exchangerate-api.com/v6/09cc9af62f6bf1885fa09dae/latest/USD';
+const url=process.env.URL_EXCHANGE + '/latest/USD';
 app.get('/api/exchange', function(req, res){
 axios.get(url)
     .then(response => {
