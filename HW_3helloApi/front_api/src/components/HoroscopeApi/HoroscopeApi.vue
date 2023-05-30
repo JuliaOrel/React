@@ -9,7 +9,14 @@ horoscopeStore.getHoroscope()
 </script>
 
 <template>
-<h1>{{horoscopeStore.data}}</h1>
+    <div v-if="horoscopeStore.isPreload">
+        Происходит загрузка данных
+
+    </div>
+    <div v-else-if="horoscopeStore.isError">
+        Произошла ошибка при запросе данных {{horoscopeStore.error}}
+    </div>
+<h1 v-else>{{horoscopeStore.data.lagna}}</h1>
 
 </template>
 

@@ -1,25 +1,44 @@
 import {defineStore} from "pinia";
 import {toast} from "vue3-toastify";
 import Mylog from "@/services/MyLog";
-export const useHoroscopeApiStore=defineStore('horoscope',{
+import axios from 'axios';
+import myLocalStorage from "@/services/myLocalStorage";
+import myAxios from "@/services/myAxios";
+
+export const useHoroscopeApiStore= defineStore('horoscope',{
     state:() =>({
-    data:{}
+        isPreload: false,
+        isError: false,
+        error: {},
+        whenLoad: myLocalStorage.getItem('HoroscopeApiStoreWhen')|| null,
+    data: myLocalStorage.getItem('HoroscopeApiStoreData')|| {}
 }),
     actions:{
-    getHoroscope(){
-        fetch('https://astrologer.p.rapidapi.com/api/v3/now', {
-            method: 'GET',
-            headers: {
-                'X-RapidAPI-Key': '6477f38e19mshd867fef0575f52fp1c8d45jsnde3711c29dd0',
-                'X-RapidAPI-Host': 'astrologer.p.rapidapi.com'
+    async getHoroscope() {
+        let d=this.whenLoad
+        if(d===null) {
+            this.isPreload=true
+            const options = {
+                method: 'GET',
+                url: '/api/horoscope',
+            };
+
+            try {
+                const response = await myAxios.request(options);
+                console.log(response.data);
+                this.data = response.data;
+                myLocalStorage.setItem('HoroscopeApiStoreData', response.data);
+                this.whenLoad = new Date().toLocaleString();
+                myLocalStorage.setItem('HoroscopeApiStoreWhen', this.whenLoad);
+                this.isPreload=false
+
+            } catch (error) {
+                console.error(error);
+                this.isError=true
+                this.error=error
+                Mylog(error);
             }
-        })
-            .then(res => res.json())
-            .then(d=>(this.data=d, console.log(d)))
-            .catch(error => {
-                Mylog(error)
-                toast.error(error.message)
-            })
+        }
     }
     }
 })
