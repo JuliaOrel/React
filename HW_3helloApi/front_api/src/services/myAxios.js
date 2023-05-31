@@ -12,7 +12,7 @@ export default function (url, options = {}) {
                 // Если я получил статус 200 (все ок)
                 if (res.status === 200) {
                     try {
-                        return res.json()
+                        return res.data
                     } catch (e) {
                         reject({message: 'Error Json in Axios'})
                     }

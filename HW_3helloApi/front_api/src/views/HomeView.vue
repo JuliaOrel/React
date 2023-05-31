@@ -10,7 +10,12 @@ onMounted(() =>{
 </script>
 
 <template>
-  <main>
-<HoroscopeApi></HoroscopeApi>
-  </main>
+    <section class="inner-page">
+        <div class="container">
+            <h2>
+                Home page
+            </h2>
+            <HoroscopeApi></HoroscopeApi>
+        </div>
+    </section>
 </template>
