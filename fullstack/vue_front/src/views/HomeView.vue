@@ -1,17 +1,21 @@
 <script setup>
-import {onMounted} from "vue";
-import {toast} from "vue3-toastify";
 
 import ExhangeApiList from "@/components/ExchangeApi/ExhangeApiList.vue";
-
-onMounted(()=>{
-    toast.info("Open Home Page")
-})
 
 </script>
 
 <template>
-  <main>
-      <ExhangeApiList></ExhangeApiList>
-  </main>
+
+      <section class="inner-page">
+          <div class="container">
+
+              <div class="section-header">
+                  <h2>Home Page</h2>
+
+              </div>
+              <ExhangeApiList></ExhangeApiList>
+
+          </div>
+      </section><!-- End Inner Page -->
+
 </template>

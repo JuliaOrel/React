@@ -1,24 +1,24 @@
 <script setup>
-
-import {onMounted} from "vue";
-import {toast} from "vue3-toastify";
-
-onMounted(() => {
-    toast.info("Open About Page")
-})
+import SiteBreadcrumbs from "@/layout/SiteBreadcrumbs.vue";
+const pageTitle="About Page"
 </script>
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+    <SiteBreadcrumbs :pageTitle=pageTitle></SiteBreadcrumbs>
+    <section class="inner-page">
+        <div class="container">
+
+            <div class="section-header">
+                <h2>{{ pageTitle }}</h2>
+            </div>
+
+            <p>
+                Text about
+            </p>
+
+        </div>
+    </section><!-- End Inner Page -->
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
+
 </style>

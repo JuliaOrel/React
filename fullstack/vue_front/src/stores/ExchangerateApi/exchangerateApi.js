@@ -18,7 +18,6 @@ export  const useExchangeApiStore = defineStore('exchangeApi',{
             if (d === null) {
                 this.isPreload = true
                 myFetch('/api/exchange')
-                    .then(res => res.json())
                     .then(newExchange => {
                         toast.success('get')
                         this.data = newExchange
