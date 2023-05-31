@@ -12,6 +12,7 @@ defineProps({
         <div class="container">
 
             <div class="d-flex justify-content-between align-items-center">
+                <br>
                 <h2>{{ pageTitle }}</h2>
                 <ol>
                     <li><RouterLink to="/">Home</RouterLink></li>

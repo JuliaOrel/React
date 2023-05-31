@@ -1,4 +1,4 @@
-import  './assets/css/style.css'
+
 
 import './assets/vendor/aos/aos.css'
 import './assets/vendor/bootstrap/css/bootstrap.min.css'
@@ -12,6 +12,7 @@ import './assets/vendor/swiper/swiper-bundle.min.js'
 
 
 import 'vue3-toastify/dist/index.css'
+import  './assets/css/style.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
