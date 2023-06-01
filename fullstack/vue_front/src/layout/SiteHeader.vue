@@ -1,5 +1,7 @@
 <script setup>
+import {useAuthStore} from "@/stores/auth/auth";
 
+const authStore=useAuthStore()
 </script>
 
 <template>
@@ -17,6 +19,8 @@
 
 <li><RouterLink to="/">Home</RouterLink></li>
 <li><RouterLink to="/about">About</RouterLink></li>
+<li v-if="!authStore.isLogin"><RouterLink to="/register">Register</RouterLink></li>
+                    <li v-else>Logout</li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle d-none"></i>
             </nav><!-- .navbar -->
