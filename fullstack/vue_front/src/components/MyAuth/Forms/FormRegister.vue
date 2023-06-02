@@ -15,6 +15,15 @@ const userName = ref('')
 const userEmail = ref('')
 const userPassword = ref('')
 const userConfirmPassword = ref('')
+
+const user=ref({
+    name: '', email: '', password: '', confirmPassword: ''
+})
+
+const sendToBack = () => {
+authStore.doRegister(user.value)
+    return false;
+}
 </script>
 
 <template>
@@ -24,24 +33,28 @@ const userConfirmPassword = ref('')
             <div class="container">
                 <div class="col-lg-6 align-justify-center pr-4 pl-0 contact-form">
                     <div class="">
-                        <form class="mt-3">
+                        <form class="mt-3" @submit.prevent="sendToBack">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" placeholder="full name" v-model="userName">
+                                        <input class="form-control" type="text" placeholder="full name" v-model="user.name">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="form-group">
-                                        <input class="form-control" type="email" placeholder="email address" v-model="userEmail">
+                                        <input class="form-control" type="email" placeholder="email address" v-model="user.email">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <input class="form-control" type="password" placeholder="password" v-model="userPassword">
+                                        <input class="form-control" type="password" placeholder="password" v-model="user.password">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">  </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <input class="form-control" type="password" placeholder="confirm password" v-model="user.confirmPassword">
+                                    </div>
+                                </div>
                                     <div class="col-lg-12">
                                         <button type="submit" class="btn btn-md btn-block btn-danger-gradiant border-0">
                                             <span>Create Account</span>
