@@ -2,7 +2,10 @@
 let express = require('express');
 let app = express();
 
-
+// Модуль работы с базой данных
+// const sequelize = require('./config/mySql')
+// const userModel = require('./models/UserSqlModel')
+// sequelize.sync().then(()=>{}).catch(err=>console.log(err));
 
 //Json и кодировки
 app.use(express.json());
@@ -14,9 +17,6 @@ app.use(bodyParser.json());
 
 
 //маршрутизация
-// let postsRouter=require('./routes/posts')
-// app.use('/api/posts', postsRouter)
-// let authRouter=require('./routes/auth');
 
 app.use('/api/auth', require('./routes/auth'))
 module.exports=app;

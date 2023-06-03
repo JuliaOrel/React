@@ -6,7 +6,7 @@ services:
     ports:
       - '33121:3306'
     volumes:
-      - './volumes/db/mysql/main:/var/lib/mysql'
+      - './volumes/config/mysql/main:/var/lib/mysql'
     extra_hosts:
         - 'host.docker.internal:host-gateway'
     networks:
@@ -94,6 +94,7 @@ services:
       - node.api
       - node.api.exchange
       - node.api.auth
+      - db.mysql.main
 
 
 
