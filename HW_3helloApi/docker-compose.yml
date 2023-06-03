@@ -1,6 +1,20 @@
 version: '3'
 services:
 
+  node.api.auth:
+    build: ./node_api_auth
+    volumes:
+      - ./node_api_auth:/usr/src/app
+    command: sh -c " npm install && npm start "
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    networks:
+      - pv121_network
+    environment:
+      - NAME=NodeApiAuth
+    env_file:
+      - .env
+
   node.api.horoscope:
     build: ./node_api_horoscope
     volumes:
@@ -63,6 +77,7 @@ services:
       - front.api
       - node.api
       - node.api.horoscope
+      - node.api.auth
 
 
 
