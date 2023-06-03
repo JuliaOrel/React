@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 //маршрутизация
 // let postsRouter=require('./routes/posts')
 // app.use('/api/posts', postsRouter)
+app.use('/api/auth', require('./routes/auth'))
 
 
 
