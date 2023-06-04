@@ -26,9 +26,9 @@ var server = http.createServer(app);
  */
 
 // Модуль работы с базой данных
-const sequelize = require('./../config/mySql')
+const sequelize = require('./../config/mysql')
 // Модели
-const userModel = require('../models/UserSqlModel')
+const userModel = require('../models/User')
 sequelize.sync().then(()=>{
   console.log('Wait DB Sql')
   server.listen(port);
