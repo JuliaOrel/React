@@ -23,7 +23,8 @@ module.exports=app;
 
 
 
-
+// Для работы с базой данных
+require("./config/mongoDb").connect();
 
 //Экспорт настроек в главный файл
 module.exports = app;
