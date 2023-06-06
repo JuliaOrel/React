@@ -17,7 +17,8 @@ app.use(bodyParser.json());
 // app.use('/api/posts', postsRouter)
 app.use('/api/auth', require('./routes/auth'))
 
-
+// Для работы с базой данных
+require("./config/mongoDB").connect();
 
 
 
