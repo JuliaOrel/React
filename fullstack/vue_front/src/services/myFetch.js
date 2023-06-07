@@ -10,7 +10,7 @@ export default function (url, options = {}) {
         fetch(url, options)
             .then( res => {
                 // Если я получил статус 200 (все ок)
-                if(res.status === 200) {
+                if(res.status === 200 || res.status===201) {
                     try {
                         return res.json()
                     } catch (e) {

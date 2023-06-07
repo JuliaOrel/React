@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 //маршрутизация
 
 app.use('/api/auth', require('./routes/auth'))
-module.exports=app;
+
 
 
 

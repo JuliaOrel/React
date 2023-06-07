@@ -1,7 +1,7 @@
 import {defineStore} from "pinia";
 import {toast} from "vue3-toastify";
-import MyAxios from "@/services/myAxios";
 import MyLog from "@/services/MyLog";
+import myAxios from "@/services/myAxios";
 
 export const useAuthStore= defineStore('auth', {
     state: () =>({
@@ -14,12 +14,12 @@ export const useAuthStore= defineStore('auth', {
     doRegister(newUser){
         // toast.info(newUser.name)
         // console.log(newUser.name)
-        MyAxios('/api/auth/register', {
+        myAxios('/api/auth/register/', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(newUser)
+            data: newUser
         })
             .then(res=> {
                 MyLog(res)
