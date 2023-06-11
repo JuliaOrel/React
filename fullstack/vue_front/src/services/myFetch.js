@@ -1,10 +1,27 @@
 
 import {toast} from "vue3-toastify";
-import myLog from "@/services/MyLog";
+import MyLog from "@/services/MyLog";
+import myLocalStorage from "@/services/myLocalStorage";
 
 export default function (url, options = {}) {
 
+    if (options.headers) {
+        if (typeof options.headers.append === 'function') {
+            // Если headers является объектом Headers, используем метод append
+            options.headers.append('Authorization', `Bearer ${myLocalStorage.getItem('token')}`);
+        } else if (typeof options.headers.Authorization === 'undefined') {
+            // Если headers не содержит заголовка Authorization, добавляем его
+            options.headers.Authorization = `Bearer ${myLocalStorage.getItem('token')}`;
+        }
+    } else {
+        // Если headers не существует, создаем новый объект Headers
+        options.headers = new Headers({
+            'Authorization': `Bearer ${myLocalStorage.getItem('token')}`,
+            //'Content-Type': 'application/json',
+        });
+    }
 
+    MyLog(options.headers)
     return new Promise( (resolve, reject) => {
 
         fetch(url, options)

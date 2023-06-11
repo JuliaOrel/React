@@ -33,10 +33,5 @@ app.use('/users', usersRouter);*/
 
 
 
-
-
-
-
-
 //Экспорт настроек в главный файл
 module.exports = app;
