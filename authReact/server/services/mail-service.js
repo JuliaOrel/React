@@ -20,6 +20,10 @@ class MailService{
             text: '',
             html:
             `
+                <div>
+                    <h1>To activate follow the link</h1>
+                    <a href="${link}">${link}</a>
+                </div>
             `
         })
     }
