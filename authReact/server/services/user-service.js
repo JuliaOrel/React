@@ -3,6 +3,7 @@ const bcrypt=require('bcrypt');
 const uuid=require('uuid');
 const mailService=require('./mail-service');
 const tokenService=require('../services/token-service')
+const UserDto=require('../dtos/user-dto')
 class UserService{
  async registration(email, password){
      const candidate=await UserModel.findOne({email})
@@ -13,7 +14,14 @@ class UserService{
      const activationLink=uuid.v4();
      const user=await UserModel.create({email, password: hashPassword, activationLink})
      await mailService.sendActivationMail(email, activationLink);
-     const tokens=tokenService.generateTokens()
+
+     const userDto=new UserDto(user);
+     const tokens=tokenService.generateTokens({...userDto});
+     await tokenService.saveToken(userDto.id, tokens.refreshToken);
+     return{
+         ...tokens,
+         user: userDto
+     }
  }
 }
 
