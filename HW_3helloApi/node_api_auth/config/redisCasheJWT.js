@@ -1,4 +1,4 @@
-const redis=require('redis');
+const redis = require('redis');
 const {createClient} = require("redis");
 
 class RedisCacheJWT {

@@ -33,7 +33,7 @@ export const useAuthStore= defineStore('auth', {
                 myLocalStorage.setItem('user', res.user)
                 myLocalStorage.setItem('token', res.token)
                 myLocalStorage.setItem('isLogin', true)
-                res.redirect('/')
+                //res.redirect('/')
                 //MyLog(res)
             }). catch(err => {
                 MyLog(err)

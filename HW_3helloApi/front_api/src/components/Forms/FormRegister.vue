@@ -10,7 +10,7 @@ const router=useRouter()
 onMounted(()=>{
     if(authStore.isLogin){
         toast.error("U are in the sys")
-        this.router.push('/')
+        //this.router.push('/')
     }
 })
 

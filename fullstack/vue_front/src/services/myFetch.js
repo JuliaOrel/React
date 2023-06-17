@@ -46,7 +46,7 @@ export default function (url, options = {}) {
                 resolve(data)
             })
             .catch(error => {
-                myLog(error)
+                MyLog(error)
                 toast.error(error.message)
                 reject(error)
             })

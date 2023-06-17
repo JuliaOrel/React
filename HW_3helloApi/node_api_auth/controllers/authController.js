@@ -1,10 +1,12 @@
 let users=[]
 const {generateUUID}=require('../services/generateUUID')
 const jwt= require('jsonwebtoken')
+const MyRedisCacheJWT=require('../config/redisCasheJWT')
 const JWT_SECRET_KEY=process.env.JWT_SECRET_KEY
 const userModel=require('../models/User')
 const UserMongoModel=require('../models/UserMongoModel')
 exports.showAll=function(request, response){
+    console.log(request.user)
     response.status(201).send(users)
 }
 exports.register = function (request, response) {
@@ -12,13 +14,14 @@ exports.register = function (request, response) {
     console.log(newUser)
 
     userModel.create(newUser).then((data) =>{
-        //console.log(data)
+        let token = jwt.sign({
+            id: data.dataValues.id,
+            email: data.dataValues.email
+        }, JWT_SECRET_KEY)
+        MyRedisCacheJWT.set(token, data.dataValues)
         response.status(201).json({
             user: data.dataValues,
-            token: jwt.sign({
-                id: data.dataValues.id,
-                email: data.dataValues.email
-            }, JWT_SECRET_KEY)
+            token: token
         })
         // newUser.id = generateUUID()
         // users.push(newUser)

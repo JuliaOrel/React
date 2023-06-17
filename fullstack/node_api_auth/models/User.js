@@ -15,14 +15,15 @@ const User = sequelize.define("users", {
     password: {
         type: Sequelize.STRING,
         allowNull: false,
-        // set(value){
-        //     //Хеширование пароля перед созданием в БД
-        //     const saltRounds=7;
-        //     const salt=bcrypt.genSaltSync(saltRounds);
-        //     const hashedPassword=bcrypt.hashSync(value, salt);
-        //     this.password=hashedPassword;
-        //
-        // }
+        async set(value){
+            //Хеширование пароля перед созданием в БД
+            const saltRounds= 7;
+            const salt = await bcrypt.genSaltSync(saltRounds);
+            const hashedPassword = await bcrypt.hashSync(value, salt);
+            console.log(hashedPassword);
+            this.password=hashedPassword;
+
+        }
     }
 });
 
