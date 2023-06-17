@@ -1,6 +1,6 @@
 const sequelize = require('./../config/mysql')
 const Sequelize = require("sequelize");
-
+const bcrypt=require('bcrypt');
 const User = sequelize.define("users", {
     id: {
         type: Sequelize.INTEGER,

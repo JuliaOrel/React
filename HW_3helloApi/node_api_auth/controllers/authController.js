@@ -4,6 +4,7 @@ const jwt= require('jsonwebtoken')
 const MyRedisCacheJWT=require('../config/redisCasheJWT')
 const JWT_SECRET_KEY=process.env.JWT_SECRET_KEY
 const userModel=require('../models/User')
+const bcrypt=require('bcrypt');
 const UserMongoModel=require('../models/UserMongoModel')
 exports.showAll=function(request, response){
     console.log(request.user)
@@ -14,6 +15,9 @@ exports.register = function (request, response) {
     console.log(newUser)
 
     userModel.create(newUser).then((data) =>{
+        bcrypt.hash(data.dataValues.password, 3).then((hashedPassword)=>{
+            data.dataValues.password=hashedPassword;
+
         let token = jwt.sign({
             id: data.dataValues.id,
             email: data.dataValues.email
@@ -22,6 +26,7 @@ exports.register = function (request, response) {
         response.status(201).json({
             user: data.dataValues,
             token: token
+        });
         })
         // newUser.id = generateUUID()
         // users.push(newUser)
