@@ -10,13 +10,14 @@
 </form>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if ($_POST['email'] == "") {
-        echo "You didn't input your email";
-        header("Refresh: 4");
-    } else if ($_POST['subscribe'] == 'on') {
+    if (trim($_POST['email'] )== "" || (strlen(trim($_POST['email'])))<5) {
+        echo "You didn't input your email or input it incorrectly";
+        header("Refresh: 1");
+    }
+    else if (isset($_POST['subscribe']) && $_POST['subscribe'] == 'on') {
         echo "Thank you for subscribing!";
     }
-    else{
+    else {
         header("Refresh: 2");
     }
 }
