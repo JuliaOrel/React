@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'function.php';
+
 $correctAnswers = [["London", "Paris"], ["Paris", "Madrid"], ["London", "Madrid"]];
 $array1=$_POST["list"]; $array2=$_POST["list2"]; $array3=$_POST["list3"];
 $array=array($array1, $array2, $array3);
@@ -15,7 +15,9 @@ for($i=0; $i<count($correctAnswers); $i++){
     }
 }
 
-echo 'Ampunt'.$countDif;
+$score=9-($countDif*1.5);
+echo $_SESSION["score"]."<br>";
+echo $score;
 
 ?>
 <!doctype html>

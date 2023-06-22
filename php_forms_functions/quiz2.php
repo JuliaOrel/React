@@ -1,7 +1,6 @@
 <?php
 session_start();
-require_once 'function.php';
-
+$_SESSION["score"]=0;
 $correctAnswers = array("London", "Paris", "Madrid");
 $array=[];
 $j=0;
@@ -9,7 +8,19 @@ foreach($_POST as $value){
     $array[$j]=$value;
     $j++;
 }
+function calculateCorrectAnswers($usersAnswers, $correctAnswers): void
+{
+    $correctAnsw=0;
 
+    for($i=0; $i<count($usersAnswers); $i++){
+        if($usersAnswers[$i]==$correctAnswers[$i]){
+            $correctAnsw++;
+        }
+
+    }
+    $_SESSION["score"]=1*(intval($correctAnsw));
+    echo $correctAnsw . $_SESSION["score"];
+}
 calculateCorrectAnswers($array, $correctAnswers);
 
 ?>
