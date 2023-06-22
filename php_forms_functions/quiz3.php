@@ -1,4 +1,22 @@
 <?php
+session_start();
+require_once 'function.php';
+$correctAnswers = [["London", "Paris"], ["Paris", "Madrid"], ["London", "Madrid"]];
+$array1=$_POST["list"]; $array2=$_POST["list2"]; $array3=$_POST["list3"];
+$array=array($array1, $array2, $array3);
+
+$countDif=0;
+for($i=0; $i<count($correctAnswers); $i++){
+    for($j=0; $j<count($correctAnswers[$i]); $j++){
+    if(!isset($array[$i][$j]) || $correctAnswers[$i][$j]!=$array[$i][$j] ){
+        $countDif++;
+    }
+
+    }
+}
+
+echo 'Ampunt'.$countDif;
+
 ?>
 <!doctype html>
 <html lang="en">

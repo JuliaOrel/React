@@ -1,18 +1,7 @@
 <?php
+session_start();
+require_once 'function.php';
 
-function calculateCorrectAnswers($usersAnswers, $correctAnswers)
-{
-    $correctAnsw=0;
-    static $score=0;
-    for($i=0; $i<count($usersAnswers); $i++){
-        if($usersAnswers[$i]==$correctAnswers[$i]){
-            $correctAnsw++;
-        }
-
-    }
-    $score=1*(intval($correctAnsw));
-    echo $correctAnsw . $score;
-}
 $correctAnswers = array("London", "Paris", "Madrid");
 $array=[];
 $j=0;
@@ -36,17 +25,17 @@ calculateCorrectAnswers($array, $correctAnswers);
 <body>
 <form action="quiz3.php" method="post">
     <label>1.</label><br>
-    <input type="checkbox" id="answer1" value="London"><label for="answer1">London</label><br>
-    <input type="checkbox" id="answer1" value="Paris"><label for="answer1">Paris</label><br>
-    <input type="checkbox" id="answer1" value="Madrid"><label for="answer1">Madrid</label><br>
+    <input type="checkbox" name=list[] id="answer1" value="London"><label for="answer1">London</label><br>
+    <input type="checkbox" name=list[] id="answer1" value="Paris"><label for="answer1">Paris</label><br>
+    <input type="checkbox" name=list[] id="answer1" value="Madrid"><label for="answer1">Madrid</label><br>
     <label>2.</label><br>
-    <input type="checkbox" id="answer2" value="London"><label for="answer2">London</label><br>
-    <input type="checkbox" id="answer2" value="Paris"><label for="answer2">Paris</label><br>
-    <input type="checkbox" id="answer2" value="Madrid"><label for="answer2">Madrid</label><br>
+    <input type="checkbox" name=list2[] id="answer2" value="London"><label for="answer2">London</label><br>
+    <input type="checkbox" name=list2[] id="answer2" value="Paris"><label for="answer2">Paris</label><br>
+    <input type="checkbox" name=list2[] id="answer2" value="Madrid"><label for="answer2">Madrid</label><br>
     <label>3.</label><br>
-    <input type="checkbox" id="answer3" value="London"><label for="answer3">London</label><br>
-    <input type="checkbox" id="answer3" value="Paris"><label for="answer3">Paris</label><br>
-    <input type="checkbox" id="answer3" value="Madrid"><label for="answer3">Madrid</label><br>
+    <input type="checkbox" name=list3[] id="answer3" value="London"><label for="answer3">London</label><br>
+    <input type="checkbox" name=list3[] id="answer3" value="Paris"><label for="answer3">Paris</label><br>
+    <input type="checkbox" name=list3[] id="answer3" value="Madrid"><label for="answer3">Madrid</label><br>
     <input type="submit" value="Next">
 </form>
 </body>
