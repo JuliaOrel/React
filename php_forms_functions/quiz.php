@@ -16,7 +16,7 @@
     <label>2.</label><br>
     <input type="radio" name="answer2" value="London"><label for="answer2">London</label><br>
     <input type="radio" name="answer2" value="Paris"><label for="answer2">Paris</label><br>
-    <input type="radio" name="answer3" value="Madrid"><label for="answer2">Madrid</label><br>
+    <input type="radio" name="answer2" value="Madrid"><label for="answer2">Madrid</label><br>
     <label>3.</label><br>
     <input type="radio" name="answer3" value="London"><label for="answer3">London</label><br>
     <input type="radio" name="answer3" value="Paris"><label for="answer3">Paris</label><br>

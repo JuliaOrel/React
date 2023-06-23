@@ -1,28 +1,11 @@
 <?php
-session_start();
-$_SESSION["score"]=0;
+require_once "function.php";
 $correctAnswers = array("London", "Paris", "Madrid");
-$array=[];
-$j=0;
-foreach($_POST as $value){
-    $array[$j]=$value;
-    $j++;
-}
-function calculateCorrectAnswers($usersAnswers, $correctAnswers): void
-{
-    $correctAnsw=0;
 
-    for($i=0; $i<count($usersAnswers); $i++){
-        if($usersAnswers[$i]==$correctAnswers[$i]){
-            $correctAnsw++;
-        }
-
-    }
-    $_SESSION["score"]=1*(intval($correctAnsw));
-    echo $correctAnsw . $_SESSION["score"];
-}
-calculateCorrectAnswers($array, $correctAnswers);
-
+$array=pullUserAnswers();
+$score=calculateCorrectAnswers($array, $correctAnswers, 1);
+setcookie("score", $score, time()+ 60);
+echo  $score;
 ?>
 <!doctype html>
 <html lang="en">
@@ -47,7 +30,7 @@ calculateCorrectAnswers($array, $correctAnswers);
     <input type="checkbox" name=list3[] id="answer3" value="London"><label for="answer3">London</label><br>
     <input type="checkbox" name=list3[] id="answer3" value="Paris"><label for="answer3">Paris</label><br>
     <input type="checkbox" name=list3[] id="answer3" value="Madrid"><label for="answer3">Madrid</label><br>
-    <input type="submit" value="Next">
+    <input type="submit" value="Next" >
 </form>
 </body>
 </html>

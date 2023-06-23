@@ -1,5 +1,6 @@
 <?php
-session_start();
+
+$score = $_COOKIE["score"];
 
 $correctAnswers = [["London", "Paris"], ["Paris", "Madrid"], ["London", "Madrid"]];
 $array1=$_POST["list"]; $array2=$_POST["list2"]; $array3=$_POST["list3"];
@@ -14,10 +15,11 @@ for($i=0; $i<count($correctAnswers); $i++){
 
     }
 }
+$score2=9-($countDif*1.5);
 
-$score=9-($countDif*1.5);
-echo $_SESSION["score"]."<br>";
-echo $score;
+$score+=$score2;
+echo $score2;
+setcookie("score", $score, time()+ 60);
 
 ?>
 <!doctype html>
@@ -30,14 +32,14 @@ echo $score;
     <title>Quiz3</title>
 </head>
 <body>
-<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+<form action="quiz4_finish.php" method="post">
     <label>1.</label><br>
     <input type="text" name="answer1"><br>
     <label>2.</label><br>
     <input type="text" name="answer2"><br>
     <label>3.</label><br>
     <input type="text" name="answer3"><br>
-    <input type="submit" value="Next">
+    <input type="submit" value="Finish">
 </form>
 </body>
 </html>
