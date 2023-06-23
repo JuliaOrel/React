@@ -19,10 +19,21 @@ function calculateCorrectAnswers($usersAnswers, $correctAnswers, $koef): float|i
 function pullUserAnswers(): array
 {
     $array=[];
+    $arr=[];
     $j=0;
     foreach($_POST as $value) {
         $array[$j] = $value;
         $j++;
     }
-    return $array;
+    if(count($_POST)<3){
+
+        return $arr;
+    }
+     return $array;
+
+
+}
+
+function show(){
+   echo "<h1>Answer all questions!!!!</h1>";
 }

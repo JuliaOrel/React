@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
     <title>Quiz</title>
 </head>
 <body>
-<form action="quiz2.php" method="post">
+<form id="quizForm" action="quiz2.php" method="post">
     <label>1.</label><br>
     <input type="radio" name="answer1" value="London"><label for="answer1">London</label><br>
     <input type="radio" name="answer1" value="Paris"><label for="answer1">Paris</label><br>
@@ -23,6 +24,22 @@
     <input type="radio" name="answer3" value="Madrid"><label for="answer3">Madrid</label><br>
     <input type="submit" value="Next">
 </form>
+<script>
+    document.getElementById('quizForm').addEventListener('submit', function(event) {
+        var checkedInputs = document.querySelectorAll('input[type="radio"]:checked');
+        console.log(checkedInputs);
+        if (checkedInputs.length<3) {
+            event.preventDefault(); // Предотвращаем отправку формы
+
+            var messageElement = document.createElement('p');
+            messageElement.textContent = 'Please answer all questions.';
+            document.body.appendChild(messageElement);
+            setTimeout(function() {
+                document.body.removeChild(messageElement);
+            }, 2000);
+        }
+    })
+</script>
 </body>
 </html>
-<?php
+

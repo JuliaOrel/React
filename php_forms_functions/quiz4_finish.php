@@ -20,8 +20,9 @@ setcookie("score", "", time() - 60);
     <title>Finish/Result</title>
 </head>
 <body>
-<form action="quiz.php" method="get">
+<form id="quizForm" action="quiz.php" method="get">
     <input type="submit" value="Restart">
 </form>
+
 </body>
 </html>
