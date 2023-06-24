@@ -1,8 +1,8 @@
 <?php
-use Controllers\HomeController;
+use user\Controllers\HomeController;
 
 require_once ("../vendor/autoload.php");
-var_dump($_GET);
+
 
 $c = null;
 
@@ -12,6 +12,7 @@ switch ($_GET['controller']) {
         break;
     default:
         $c = new HomeController();
+
 }
 
 switch ($_GET['method']) {
