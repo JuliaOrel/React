@@ -1,0 +1,15 @@
+{
+    "name": "user/05_composer",
+    "description": "First packet with composer",
+    "type": "project",
+    "require": {
+        "phpmailer/phpmailer": "dev-master"
+    },
+    "license": "BeerWare",
+    "autoload": {
+        "psr-4": {
+            "User\\05Composer\\": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
