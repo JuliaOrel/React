@@ -8,7 +8,7 @@ app.use(cors({ origin: "*" }));
 
 // Отддаим файл с клиентом, что бы увидеть работу сокетов
 app.get("/", (req, res) => {
-    const filePath = "/home/keeper/PhpstormProjects/pv121/socket_easy/client.html";
+    const filePath = "C:/Users/User/PhpstormProjects/React/socket_easy/client.html";
     res.sendFile(filePath);
 });
 
