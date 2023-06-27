@@ -9,6 +9,7 @@ class HelloControllerRequest extends FormRequest
     public function rules(): array{
         return [
            'myVar' => 'required'
+
         ];
 
     }
