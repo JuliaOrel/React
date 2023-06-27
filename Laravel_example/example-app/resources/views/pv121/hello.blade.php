@@ -1,18 +1,19 @@
-<h1>Hello from blade</h1>
-<p>{{$userName}}</p>
-<p>{{$hack}}</p>
+@extends("layouts.main")
 
-@if($iterator <5)
-    <p>less than 5</p>
-@else
-    <p>more than 5</p>
-@endif
+{{--Опишу чать - которую я буду передавать в заголовок страницы--}}
+@section('title', 'Page Title')
 
-@foreach($users as $user) @endforeach
+@section('sidebar')
+    @parent
+    <h1>Hello from blade </h1>
+    <p>Эта часть попадает в секцию .</p>
+@endsection
 
-<ul>
-    @for($i=0; $i<$iterator; $i++)
-        <li>{{$i}}</li>
-        @endfor
-</ul>
-<?php
+@section('content')
+    @include("forms.contact")
+    <p>Эта часть будет внутри главной - там где аналог RenderBody .</p>
+@endsection
+
+{{--При использовании мастер страниц - недопустимо использовать код вне секций--}}
+{{--<p>The current UNIX timestamp is {{ time() }}.</p>--}}
+{{--<p>The current date {{ date("d/m/Y H:i:s") }}.</p>--}}

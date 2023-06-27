@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::get('/pv121', function () {
     return view('pv121');
 });
+Route::post('/c/pv121', [\App\Http\Controllers\Pv121Controller::class, 'form']);
 
 /**
  * Прямой маршрут на контроллер
