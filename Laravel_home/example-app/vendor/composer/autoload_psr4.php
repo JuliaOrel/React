@@ -89,5 +89,6 @@ return array(
     'Carbon\\' => array($vendorDir . '/nesbot/carbon/src/Carbon'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
     'Barryvdh\\Debugbar\\' => array($vendorDir . '/barryvdh/laravel-debugbar/src'),
+    'App\\Http\\Controllers\\' => array($baseDir . '/app/Http/Controllers'),
     'App\\' => array($baseDir . '/app', $vendorDir . '/laravel/pint/app'),
 );

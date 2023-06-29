@@ -173,6 +173,7 @@ class ComposerStaticInitb8c8626ac92aff6e41f2eb84bf8642aa
         ),
         'A' => 
         array (
+            'App\\Http\\Controllers\\' => 21,
             'App\\' => 4,
         ),
     );
@@ -515,6 +516,10 @@ class ComposerStaticInitb8c8626ac92aff6e41f2eb84bf8642aa
         array (
             0 => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src',
         ),
+        'App\\Http\\Controllers\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/Http/Controllers',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -525,7 +530,9 @@ class ComposerStaticInitb8c8626ac92aff6e41f2eb84bf8642aa
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Pv121Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Pv121Controller.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
