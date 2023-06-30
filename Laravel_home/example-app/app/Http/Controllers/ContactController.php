@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use JetBrains\PhpStorm\NoReturn;
 use App\Http\Requests\ContactRequest;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
-    #[NoReturn] public function submit(ContactRequest $request): void
+    public function submit(ContactRequest $request):RedirectResponse
     {
-//        $validation=$request->validate([
-//            'subject' => 'required|min:5|max:50',
-//            'message' => 'required|min:3|max:500'
-//        ]);
+
+        Contact::create($request->all());
+        return redirect()->route('home')->with('success', 'Message was added' );
     }
 }

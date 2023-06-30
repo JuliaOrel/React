@@ -18,6 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::apiResource('cities', \App\Http\Controllers\ApiCityController::class);
+
 Route::get('pv011', function () {
     return json_encode([
        'message' => 'Hello Pv011'

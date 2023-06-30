@@ -11,10 +11,14 @@
 </head>
 <body>
 @include('inc.header')
+
 @if(Request::is('/'))
 @include('inc.hero')
 @endif
+
+
 <div class="container mt-5">
+    @include('inc.messages')
     <div class="row">
         <div class="col-6">
             @yield('content')

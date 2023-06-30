@@ -25,7 +25,13 @@ Route::get('/contact', function(){
     return view('contact');
 })->name('contact');
 
+Route::get('/cities', function(){
+    return view('cities');
+})->name('cities');
+
 Route::post('/contact/submit', [\App\Http\Controllers\ContactController::class, 'submit'])->name('contact-form');
+
+Route::post('/cities/submit', [\App\Http\Controllers\CityController::class, 'submit'])->name('city-form');
 /**
  * Вернуть сразу представление (без контроллера)
  */
