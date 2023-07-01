@@ -4,21 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
 class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
 //        $c=City::where('city', 'LIKE', '%Myk%')->get();
 //        return view('allcities', [
 //            'cities'=>$c
 //        ]);
-        return view ('allcities', [
-            'cities'=>City::all()->sortBy('city')
+
+        $c=Cache::remember('cities.all', 30, function(){
+            return City::paginate(1);
+        });
+        return view('allcities', [
+            'cities'=> $c
         ]);
+//        return view ('allcities', [
+//            'cities'=>City::all()->sortBy('city')
+//        ]);
     }
 
     /**

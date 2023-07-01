@@ -4,6 +4,9 @@
 @endsection
 
 @section('content')
+    @isset($sql)
+        <div>{{$sql}}</div>
+    @endisset
     <h1>All cities</h1>
     @foreach($cities as $city)
         <div class="alert alert-info">
@@ -13,4 +16,8 @@
 
         </div>
     @endforeach
+
+
+    {{$cities->links()}}
+
 @endsection

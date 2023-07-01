@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CityRequest;
 use App\Models\City;
+use Illuminate\Http\Request;
 
 class ApiCityController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-       return City::all();
+       return City::paginate($request->input('perPage', 2));
     }
 
     /**
