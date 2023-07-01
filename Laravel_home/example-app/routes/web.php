@@ -25,9 +25,9 @@ Route::get('/contact', function(){
     return view('contact');
 })->name('contact');
 
-Route::get('/cities', function(){
-    return view('cities');
-})->name('cities');
+//Route::get('/cities', function(){
+//    return view('cities');
+//})->name('cities');
 
 Route::post('/contact/submit', [\App\Http\Controllers\ContactController::class, 'submit'])->name('contact-form');
 Route::get('/contact/all', [\App\Http\Controllers\ContactController::class, 'allData'])->name('contact-data');
@@ -36,7 +36,9 @@ Route::get('/contact/all/{id}/update', [\App\Http\Controllers\ContactController:
 Route::post('/contact/all/{id}/update', [\App\Http\Controllers\ContactController::class, 'updateMessageSubmit'])->name('contact-update-submit');
 Route::get('/contact/all/{id}/delete', [\App\Http\Controllers\ContactController::class, 'deleteMessage'])->name('contact-delete');
 
-Route::post('/cities/submit', [\App\Http\Controllers\CityController::class, 'submit'])->name('city-form');
+Route::get('/cities/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('cities-search');
+Route::resource('cities', \App\Http\Controllers\CityController::class)->name('index', 'cities');
+
 /**
  * Вернуть сразу представление (без контроллера)
  */
