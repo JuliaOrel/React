@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CityRequest;
 use App\Models\City;
+use App\Presenters\RequestParamsPresenter;
+use App\Services\Interfaces\ICityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
@@ -12,16 +15,15 @@ class CityController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request, ICityService $service)
     {
 //        $c=City::where('city', 'LIKE', '%Myk%')->get();
 //        return view('allcities', [
 //            'cities'=>$c
 //        ]);
+        $params=new RequestParamsPresenter($request);
+        $c=$service->index($params);
 
-        $c=Cache::remember('cities.all', 30, function(){
-            return City::paginate(1);
-        });
         return view('allcities', [
             'cities'=> $c
         ]);

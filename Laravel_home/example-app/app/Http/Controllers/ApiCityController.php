@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CityRequest;
 use App\Models\City;
+use App\Presenters\RequestParamsPresenter;
+use App\Services\Interfaces\ICityService;
 use Illuminate\Http\Request;
 
 class ApiCityController extends Controller
@@ -11,9 +13,11 @@ class ApiCityController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request, ICityService $service)
     {
-       return City::paginate($request->input('perPage', 2));
+        $params=new RequestParamsPresenter($request);
+        $c=$service->index($params);
+       return $c;
     }
 
     /**
