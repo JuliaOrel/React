@@ -20,6 +20,8 @@
     <a href="{{ route('cities.create') }}" type="submit" class="btn btn-success">New city</a>
 
 
-    {{$cities->links()}}
+    <div class="pagination-container">
+        {{$cities->links()}}
+    </div>
 
 @endsection
