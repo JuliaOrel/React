@@ -42,9 +42,10 @@ Route::resource('cities', \App\Http\Controllers\CityController::class)->name('in
 
 Route::match(['get', 'post'], '/cities/create', [\App\Http\Controllers\CityController::class, 'create'])->name('cities.create');
 Route::post('/cities', [\App\Http\Controllers\CityController::class, 'store'])->name('cities.store');
-Route::get('/cities/{id}', [\App\Http\Controllers\ContactController::class, 'show'])->name('city-data-one');
-
-
+Route::get('/cities/{id}', [\App\Http\Controllers\CityController::class, 'show'])->name('city-data-one');
+Route::get('/cities/{id}/update', [\App\Http\Controllers\CityController::class, 'updateCity'])->name('city-update');
+Route::post('/cities/{id}/update', [\App\Http\Controllers\CityController::class, 'update'])->name('city-update-submit');
+Route::get('/cities/{id}/delete', [\App\Http\Controllers\CityController::class, 'delete'])->name('city-delete');
 /**
  * Вернуть сразу представление (без контроллера)
  */

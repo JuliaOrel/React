@@ -58,25 +58,29 @@ class CityController extends Controller
     public function show(int $id)
     {
         $data = $this->service2->show($id);
-
         return view('one-city', ['data' => $data]);
-
     }
 
+    public function updateCity($id){
+        $city=new City;
+        return view('update-city', ['data'=>$city->find($id)]);
+    }
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id)
     {
-        //
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
-        //
+        $this->service2->update($id, $request);
+
+        return redirect()->route('cities')->with('success', 'City updated successfully');
     }
 
     /**

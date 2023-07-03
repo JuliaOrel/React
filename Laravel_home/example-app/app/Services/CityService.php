@@ -21,6 +21,13 @@ class CityService implements ICityService
         $city=new City();
         return $city->find($id);
     }
+
+    public function update($id, array $data)
+    {
+        $city = City::findOrFail($id);
+        $city->update($data);
+        return $city;
+    }
 //    public function index(RequestParamsPresenter $params)
 //    {
 //        $cacheKey='allcities.page' . $params->page. '.perPage' . $params->perPage;
