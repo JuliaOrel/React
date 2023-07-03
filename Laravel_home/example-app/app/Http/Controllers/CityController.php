@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CityRequest;
 use App\Models\City;
 use App\Presenters\RequestParamsPresenter;
+use App\Services\Interfaces\ICachable;
 use App\Services\Interfaces\ICityService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -12,17 +13,20 @@ use Illuminate\Support\Facades\Redis;
 
 class CityController extends Controller
 {
+    public function __construct(protected ICachable $service)
+    {}
+
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request, ICityService $service)
+    public function index(Request $request)
     {
 //        $c=City::where('city', 'LIKE', '%Myk%')->get();
 //        return view('allcities', [
 //            'cities'=>$c
 //        ]);
         $params=new RequestParamsPresenter($request);
-        $c=$service->index($params);
+        $c=$this->service->index($params);
 
         return view('allcities', [
             'cities'=> $c

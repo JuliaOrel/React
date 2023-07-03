@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Services\Interfaces;
+
 use App\Presenters\RequestParamsPresenter;
 
-interface ICityService extends ICachable
+interface ICachable
 {
     public function index(RequestParamsPresenter $params);
 }
