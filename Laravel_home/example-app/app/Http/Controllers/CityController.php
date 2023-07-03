@@ -61,16 +61,13 @@ class CityController extends Controller
         return view('one-city', ['data' => $data]);
     }
 
-    public function updateCity($id){
-        $city=new City;
-        return view('update-city', ['data'=>$city->find($id)]);
-    }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(int $id)
     {
-
+        $data = $this->service2->edit($id);
+        return view('update-city', ['data' => $data]);
     }
 
     /**
@@ -86,8 +83,9 @@ class CityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $this->service2->destroy($id);
+        return redirect()->route('cities')->with('success', 'Message was deleted');
     }
 }

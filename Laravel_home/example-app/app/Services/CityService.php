@@ -22,11 +22,21 @@ class CityService implements ICityService
         return $city->find($id);
     }
 
+    public function edit($id)
+    {
+        return City::findOrFail($id);
+    }
     public function update($id, array $data)
     {
         $city = City::findOrFail($id);
         $city->update($data);
         return $city;
+    }
+
+    public function destroy($id)
+    {
+        $city = City::findOrFail($id);
+        $city->delete();
     }
 //    public function index(RequestParamsPresenter $params)
 //    {
