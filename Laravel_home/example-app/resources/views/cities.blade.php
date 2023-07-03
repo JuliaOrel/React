@@ -3,10 +3,10 @@
 @section('title-block')Cities
 @endsection
 @section('content')
-    <h1>Cities page</h1>
+    <h1>Cities creation page</h1>
 
 
-    <form action="{{ route('city-form')}}" method="post">
+    <form action="{{ route('cities.store')}}" method="post">
         @csrf
         <div class="form-group">
             <label for="city">Input city</label>

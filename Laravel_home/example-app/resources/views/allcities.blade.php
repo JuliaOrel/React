@@ -17,6 +17,8 @@
         </div>
     @endforeach
 
+    <a href="{{ route('cities.create') }}" type="submit" class="btn btn-success">New city</a>
+
 
     {{$cities->links()}}
 

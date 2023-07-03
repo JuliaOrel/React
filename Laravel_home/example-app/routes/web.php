@@ -25,6 +25,7 @@ Route::get('/contact', function(){
     return view('contact');
 })->name('contact');
 
+
 //Route::get('/cities', function(){
 //    return view('cities');
 //})->name('cities');
@@ -38,6 +39,10 @@ Route::get('/contact/all/{id}/delete', [\App\Http\Controllers\ContactController:
 
 Route::get('/cities/search', [\App\Http\Controllers\SearchController::class, 'search'])->name('cities-search');
 Route::resource('cities', \App\Http\Controllers\CityController::class)->name('index', 'cities');
+
+Route::match(['get', 'post'], '/cities/create', [\App\Http\Controllers\CityController::class, 'create'])->name('cities.create');
+Route::post('/cities', [\App\Http\Controllers\CityController::class, 'store'])->name('cities.store');
+
 
 /**
  * Вернуть сразу представление (без контроллера)

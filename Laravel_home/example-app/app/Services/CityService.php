@@ -4,12 +4,17 @@ namespace App\Services;
 use App\Models\City;
 use App\Presenters\RequestParamsPresenter;
 use App\Services\Interfaces\ICityService;
+use Illuminate\Http\Request;
 
 class CityService implements ICityService
 {
     public  function index(RequestParamsPresenter $params)
     {
         return City::paginate($params->perPage);
+    }
+
+    public function store(array $data){
+        return City::create($data);
     }
 //    public function index(RequestParamsPresenter $params)
 //    {

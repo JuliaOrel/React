@@ -15,12 +15,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //Simple DI
-        //$this->app->bind(ICityService::class, CityService::class);
+        // Simple DI
+        $this->app->bind(ICityService::class, CityService::class);
 
-        $this->app->bind(CityController::class, function()
-        {
-            return new CityController(new CacheDecorator($this->app->make(CityService::class), "Cities"));
+        $this->app->bind(CityController::class, function ($app) {
+            $cityService = $app->make(ICityService::class);
+            $cacheDecorator = new CacheDecorator($cityService, "Cities");
+            return new CityController($cityService, $cacheDecorator);
         });
     }
 

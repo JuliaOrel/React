@@ -4,6 +4,7 @@ namespace App\Decorators;
 
 use App\Presenters\RequestParamsPresenter;
 use App\Services\Interfaces\ICachable;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class CacheDecorator implements ICachable
@@ -24,4 +25,6 @@ class CacheDecorator implements ICachable
         });
         return $c;
     }
+
+
 }

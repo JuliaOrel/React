@@ -8,12 +8,10 @@ use App\Presenters\RequestParamsPresenter;
 use App\Services\Interfaces\ICachable;
 use App\Services\Interfaces\ICityService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 
 class CityController extends Controller
 {
-    public function __construct(protected ICachable $service)
+    public function __construct(protected ICityService $service2, protected ICachable $service)
     {}
 
     /**
@@ -41,7 +39,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+       return view ('cities');
     }
 
     /**
@@ -49,7 +47,9 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $city=$this->service2->store($request->all());
+        $city->save();
+        return redirect()->route('home')->with('success', 'Message was added' );
     }
 
     /**
