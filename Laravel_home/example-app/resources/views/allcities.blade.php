@@ -11,8 +11,8 @@
     @foreach($cities as $city)
         <div class="alert alert-info">
             <h3>{{$city->getAttribute('city')}}</h3>
-            <p>{{$city->getAttribute('description')}}</p>
-            <p><small>{{$city->created_at}}</small></p>
+
+            <a href="{{route('city-data-one', $city->id)}}"><button class="btn btn-warning">Details</button></a>
 
         </div>
     @endforeach

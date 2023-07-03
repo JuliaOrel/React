@@ -42,6 +42,7 @@ Route::resource('cities', \App\Http\Controllers\CityController::class)->name('in
 
 Route::match(['get', 'post'], '/cities/create', [\App\Http\Controllers\CityController::class, 'create'])->name('cities.create');
 Route::post('/cities', [\App\Http\Controllers\CityController::class, 'store'])->name('cities.store');
+Route::get('/cities/{id}', [\App\Http\Controllers\ContactController::class, 'show'])->name('city-data-one');
 
 
 /**

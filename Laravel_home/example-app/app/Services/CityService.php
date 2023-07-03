@@ -16,6 +16,11 @@ class CityService implements ICityService
     public function store(array $data){
         return City::create($data);
     }
+
+    public function show($id){
+        $city=new City();
+        return $city->find($id);
+    }
 //    public function index(RequestParamsPresenter $params)
 //    {
 //        $cacheKey='allcities.page' . $params->page. '.perPage' . $params->perPage;

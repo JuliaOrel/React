@@ -8,4 +8,5 @@ interface ICityService extends ICachable
     public function index(RequestParamsPresenter $params);
 
     public function store(array $data);
+    public function show($id);
 }

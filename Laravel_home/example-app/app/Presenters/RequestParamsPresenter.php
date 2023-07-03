@@ -9,7 +9,7 @@ class RequestParamsPresenter
     protected array $params;
     public function __construct(Request $request){
         $this->params=[
-            'perPage'=>$request->input('perPage', 1),
+            'perPage'=>$request->input('perPage', 3),
             'page'=>$request->input('page', 1)
         ];
     }

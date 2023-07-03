@@ -55,9 +55,12 @@ class CityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
-        //
+        $data = $this->service2->show($id);
+
+        return view('one-city', ['data' => $data]);
+
     }
 
     /**
