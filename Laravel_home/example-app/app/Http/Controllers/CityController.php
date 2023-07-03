@@ -78,7 +78,7 @@ class CityController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $this->service2->update($id, $request);
+        $this->service2->update($id, $request->all());
 
         return redirect()->route('cities')->with('success', 'City updated successfully');
     }
