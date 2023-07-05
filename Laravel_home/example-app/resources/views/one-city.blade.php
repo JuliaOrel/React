@@ -12,7 +12,7 @@
 
         <p><small>{{$data->created_at}}</small></p>
         <a href="{{route('cities.edit', $data->id)}}"><button class="btn btn-primary">Edit</button></a>
-        <a href="{{route('cities.destroy', $data->id)}}"><button class="btn btn-danger">Delete</button></a>
+        <a href="{{route('city-delete', $data->id)}}"><button class="btn btn-danger">Delete</button></a>
 
     </div>
 

@@ -45,7 +45,7 @@ Route::resource('cities', \App\Http\Controllers\CityController::class)->name('in
 //Route::get('/cities/{id}', [\App\Http\Controllers\CityController::class, 'show'])->name('city-data-one');
 //Route::get('/cities/{id}/update', [\App\Http\Controllers\CityController::class, 'edit'])->name('city-update');
 //Route::post('/cities/{id}/update', [\App\Http\Controllers\CityController::class, 'update'])->name('city-update-submit');
-//Route::get('/cities/{id}/delete', [\App\Http\Controllers\CityController::class, 'destroy'])->name('city-delete');
+Route::get('/cities/{id}/delete', [\App\Http\Controllers\CityController::class, 'destroy'])->name('city-delete');
 /**
  * Вернуть сразу представление (без контроллера)
  */
