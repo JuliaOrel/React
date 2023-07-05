@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CityRequest;
-use App\Models\City;
 use App\Presenters\RequestParamsPresenter;
 use App\Services\Interfaces\ICachable;
 use App\Services\Interfaces\ICityService;
@@ -45,7 +44,7 @@ class CityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CityRequest $request)
     {
         $city=$this->service2->store($request->all());
         $city->save();

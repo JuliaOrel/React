@@ -12,7 +12,7 @@
         <div class="alert alert-info">
             <h3>{{$city->getAttribute('city')}}</h3>
 
-            <a href="{{route('city-data-one', $city->id)}}"><button class="btn btn-warning">Details</button></a>
+            <a href="{{route('cities.show', $city->id)}}"><button class="btn btn-warning">Details</button></a>
 
         </div>
     @endforeach
