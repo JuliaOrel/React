@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('slug', 64)->unique()->index();
             $table->string('title', 64);
             $table->text('body');
+            $table->string('img_url', 64)->nullable();
             $table->timestamps();
         });
     }

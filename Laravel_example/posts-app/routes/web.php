@@ -30,6 +30,7 @@ Route::post('/c/pv121', [\App\Http\Controllers\Pv121Controller::class, 'form']);
  */
 Route::get('/c/pv121', [\App\Http\Controllers\Pv121Controller::class, 'helloController']);
 
+Route::resource('posts', \App\Http\Controllers\PostController::class);
 
 /**
  * Динамический метод - по принципу asp.net - имя контроллера - имя метода
