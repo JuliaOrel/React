@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/posts/search', [\App\Http\Controllers\Post\SearchPostController::class, 'search']);
+//Route::get('/posts/search', [\App\Http\Controllers\Post\SearchPostController::class, 'search']);
+Route::resource('posts', \App\Http\Controllers\Post\PostController::class);
 /**
  * Вернуть сразу представление (без контроллера)
  */
@@ -31,7 +32,7 @@ Route::post('/c/pv121', [\App\Http\Controllers\Pv121Controller::class, 'form']);
 
 Route::get('/c/pv121', [\App\Http\Controllers\Pv121Controller::class, 'helloController']);
 
-Route::resource('posts', \app\Http\Controllers\Post\PostController::class);
+
 
 
 

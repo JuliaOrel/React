@@ -4,44 +4,57 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Presenters\RequestParamsPresenter;
+use App\Services\Interfaces\IPostService;
 use Illuminate\Http\Request;
+
 
 class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //1
-//        $p=Post::all()->sortBy('body');
-//        $p=Post::all()->filter(function($post){
-//            return strpos($post->title, 'Contact')!== false;
-//        });
 
-        //2
-//        $p=Post::where('title', 'LIKE', '%Contact%')->get()->filter(function ($post){
-//            return strpos($post->title, 'us') !== false;
-//        });
+    public function index(Request $request, IPostService $service){
+        $params=new RequestParamsPresenter($request);
+        $p=$service->index($params);
 
-        //3
-//        $p=Post::query()
-//            ->where('title', 'LIKE', '%Contact%')
-//            ->where('title', 'LIKE', '%us%')
-//            ->get();
-
-        //4
-        $builder=Post::query();
-
-        $builder->where('title', 'LIKE', '%Contact%');
-        $builder->where('title', 'LIKE', '%us%');
-        $sql=$builder->toSql();
-        $p=$builder->get();
         return view('posts.index', [
-            'posts'=>$p,
-            'sql'=>$sql
+            'posts'=>$p
         ]);
     }
+    //indexNoPages
+//    public function index()
+//    {
+//        //1
+////        $p=Post::all()->sortBy('body');
+////        $p=Post::all()->filter(function($post){
+////            return strpos($post->title, 'Contact')!== false;
+////        });
+//
+//        //2
+////        $p=Post::where('title', 'LIKE', '%Contact%')->get()->filter(function ($post){
+////            return strpos($post->title, 'us') !== false;
+////        });
+//
+//        //3
+////        $p=Post::query()
+////            ->where('title', 'LIKE', '%Contact%')
+////            ->where('title', 'LIKE', '%us%')
+////            ->get();
+//
+//        //4
+//        $builder=Post::query();
+//
+//        $builder->where('title', 'LIKE', '%Contact%');
+//        $builder->where('title', 'LIKE', '%us%');
+//        $sql=$builder->toSql();
+//        $p=$builder->get();
+//        return view('posts.index', [
+//            'posts'=>$p,
+//            'sql'=>$sql
+//        ]);
+//    }
 
     /**
      * Show the form for creating a new resource.

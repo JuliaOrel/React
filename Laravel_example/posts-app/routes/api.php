@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
+Route::apiResource('posts', \App\Http\Controllers\Post\Api\ApiPostController::class);
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::apiResource('posts', \app\Http\Controllers\Post\Api\ApiPostController::class);
+
 
 Route::get('pv011', function () {
     return json_encode([

@@ -10,4 +10,4 @@
 </ul>
 
 
-{{--{{ $posts->links() }}--}}
+{{ $posts->links() }}
