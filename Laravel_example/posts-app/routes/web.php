@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/posts/search', [\App\Http\Controllers\Post\SearchPostController::class, 'search']);
 /**
  * Вернуть сразу представление (без контроллера)
  */
@@ -28,9 +28,12 @@ Route::post('/c/pv121', [\App\Http\Controllers\Pv121Controller::class, 'form']);
 /**
  * Прямой маршрут на контроллер
  */
+
 Route::get('/c/pv121', [\App\Http\Controllers\Pv121Controller::class, 'helloController']);
 
-Route::resource('posts', \App\Http\Controllers\PostController::class);
+Route::resource('posts', \app\Http\Controllers\Post\PostController::class);
+
+
 
 /**
  * Динамический метод - по принципу asp.net - имя контроллера - имя метода
