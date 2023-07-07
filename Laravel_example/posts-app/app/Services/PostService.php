@@ -12,6 +12,6 @@ class PostService implements IPostService
 
     public function index(RequestParamsPresenter $params)
     {
-        return Post::paginate($params->perPage);
+        return Post::with('categories')->paginate($params->perPage);
     }
 }

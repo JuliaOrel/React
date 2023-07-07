@@ -20,11 +20,13 @@ class PostController extends Controller
      */
 
     public function index(Request $request){
-        $params=new RequestParamsPresenter($request);
-        $p=$this->service->index($params);
+
+        $params = new RequestParamsPresenter($request);
+
+        $p = $this->service->index($params);
 
         return view('posts.index', [
-            'posts'=>$p
+            'posts' => $p
         ]);
     }
     //indexNoPages
