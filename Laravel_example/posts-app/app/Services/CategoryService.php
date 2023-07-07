@@ -2,16 +2,15 @@
 
 namespace App\Services;
 
-use App\Models\Post;
+use App\Models\Category;
 use App\Presenters\RequestParamsPresenter;
-use App\Services\Interfaces\IPostService;
+use app\Services\Interfaces\ICategoryService;
 use Illuminate\Support\Facades\Cache;
 
-class PostService implements IPostService
+class CategoryService implements ICategoryService
 {
-
     public function index(RequestParamsPresenter $params)
     {
-        return Post::paginate($params->perPage);
+        return Category::paginate($params->perPage);
     }
 }

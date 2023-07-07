@@ -5,19 +5,23 @@ namespace App\Http\Controllers\Post;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Presenters\RequestParamsPresenter;
+use App\Services\Interfaces\ICachable;
 use App\Services\Interfaces\IPostService;
 use Illuminate\Http\Request;
 
 
 class PostController extends Controller
 {
+    public function __construct(protected ICachable $service)
+    {}
+
     /**
      * Display a listing of the resource.
      */
 
-    public function index(Request $request, IPostService $service){
+    public function index(Request $request){
         $params=new RequestParamsPresenter($request);
-        $p=$service->index($params);
+        $p=$this->service->index($params);
 
         return view('posts.index', [
             'posts'=>$p
