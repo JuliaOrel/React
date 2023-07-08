@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class UserPostController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $userPosts=Post::query()
+            ->where('author_id', '=', $request->user()->id)
+            ->orderBy('updated_at')
+            ->paginate($request->input('perPage', 10));
+       //$userPosts=User::find($request->user()->id)->posts()->get();
+       return Inertia::render('Profile/Posts/Index', [
+           'posts'=>$userPosts
+       ]);
     }
 
     /**
@@ -19,7 +29,7 @@ class UserPostController extends Controller
      */
     public function create()
     {
-        //
+       return Inertia::render('Profile/Posts/Create');
     }
 
     /**
