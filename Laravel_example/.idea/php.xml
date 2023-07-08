@@ -234,6 +234,9 @@
       <path value="$PROJECT_DIR$/posts-app/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/posts-app/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/posts-app/vendor/fakerphp/faker" />
+      <path value="$PROJECT_DIR$/posts-app/vendor/laravel/breeze" />
+      <path value="$PROJECT_DIR$/posts-app/vendor/inertiajs/inertia-laravel" />
+      <path value="$PROJECT_DIR$/posts-app/vendor/tightenco/ziggy" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />

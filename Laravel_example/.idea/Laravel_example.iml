@@ -7,6 +7,9 @@
       <sourceFolder url="file://$MODULE_DIR$/posts-app" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/posts-app/tests/Feature" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/posts-app/tests/Unit" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/posts-app/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/example-app/vendor/barryvdh/laravel-debugbar" />
       <excludeFolder url="file://$MODULE_DIR$/example-app/vendor/brick/math" />
       <excludeFolder url="file://$MODULE_DIR$/example-app/vendor/composer" />
@@ -229,6 +232,9 @@
       <excludeFolder url="file://$MODULE_DIR$/posts-app/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/posts-app/vendor/voku/portable-ascii" />
       <excludeFolder url="file://$MODULE_DIR$/posts-app/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/posts-app/vendor/inertiajs/inertia-laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/posts-app/vendor/laravel/breeze" />
+      <excludeFolder url="file://$MODULE_DIR$/posts-app/vendor/tightenco/ziggy" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
