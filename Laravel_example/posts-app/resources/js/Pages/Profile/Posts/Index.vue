@@ -1,8 +1,10 @@
 <script setup>
+
 import {Head, usePage} from "@inertiajs/vue3";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import PostListItem from "@/Pages/Profile/Posts/Partials/PostListItem.vue";
 import NavLink from "@/Components/NavLink.vue";
+
 const posts = usePage().props.posts;
 </script>
 

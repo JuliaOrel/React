@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Posts\RequestPostStore;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class UserPostController extends Controller
@@ -16,7 +19,7 @@ class UserPostController extends Controller
     {
         $userPosts=Post::query()
             ->where('author_id', '=', $request->user()->id)
-            ->orderBy('updated_at')
+            ->orderByDesc('updated_at')
             ->paginate($request->input('perPage', 10));
        //$userPosts=User::find($request->user()->id)->posts()->get();
        return Inertia::render('Profile/Posts/Index', [
@@ -35,9 +38,17 @@ class UserPostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RequestPostStore $request)
     {
-        //
+        $newPost = new Post();
+        $newPost->setAttribute('title', $request->input('title'));
+        $newPost->setAttribute('body', $request->input('body'));
+        $newPost->setAttribute('author_id', $request->user()->id);
+        $newPost->setAttribute('slug', Str::slug($request->input('title') . '_' . date('Yd-m-Y-H-i-s')));
+
+        $newPost->save();
+
+        return Redirect::route('posts.index');
     }
 
     /**
@@ -51,24 +62,49 @@ class UserPostController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(int $id, Request $request)
     {
-        //
+       $editPost=Post::find($id);
+       if($editPost->getAttribute('author_id') != $request->user()->id){
+           abort(403);
+      }
+       return Inertia::render('Profile/Posts/Edit', [
+           'post'=>$editPost
+       ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(RequestPostStore $request, int $id)
     {
-        //
+        $editPost = Post::find($id);
+
+        if($editPost->getAttribute('author_id') != $request->user()->id) {
+            abort(403);
+        }
+
+        $editPost->setAttribute('title', $request->input('title'));
+        $editPost->setAttribute('body', $request->input('body'));
+
+        $editPost->save();
+
+        return Redirect::route('posts.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id, Request $request)
     {
-        //
+        $delPost = Post::find($id);
+        if ($delPost == null) {
+            abort(404);
+        }
+        if($delPost->getAttribute('author_id') != $request->user()->id) {
+            abort(403);
+        }
+        $delPost->delete();
+        return Redirect::route('posts.index');
     }
 }
