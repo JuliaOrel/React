@@ -20,13 +20,14 @@ class UpdateAvatarController extends Controller
             $path = "/storage/" . $fileNewAvatar->storePublicly(
                     'avatars/' . $user->id ."/" . date("Y-m-d"),
                     'public');
-
             if( !is_null($user->avatar)) {
                 $fileOldAvatar = "public/" . str_replace("/storage/", "", $user->avatar);
                 Storage::delete($fileOldAvatar);
             }
 
+
             $user->avatar = $path;
             $user->save();
+            return Redirect::route('profile.edit');
         }
 }
