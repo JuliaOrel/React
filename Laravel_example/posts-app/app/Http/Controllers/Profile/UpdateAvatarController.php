@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Profile;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\RequestAvatarUpdate;
 use App\Mail\MailInfo;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
@@ -17,7 +18,9 @@ class UpdateAvatarController extends Controller
             }
 
             $fileNewAvatar = $request->file('avatar');
+
             $user = $request->user();
+
 
             $path = "/storage/" . $fileNewAvatar->storePublicly(
                     'avatars/' . $user->id ."/" . date("Y-m-d"),
@@ -25,16 +28,28 @@ class UpdateAvatarController extends Controller
             if( !is_null($user->avatar)) {
                 $fileOldAvatar = "public/" . str_replace("/storage/", "", $user->avatar);
                 Storage::delete($fileOldAvatar);
+
             }
 
+           $res= Storage::disk('minio')->put(
+           'avatars/' . $user->id ."/" . date("Y-m-d") ,
+            $fileNewAvatar);
+            if($res){
+                Log::debug('true');
+            }
+            else{
+                Log::debug('false');
+            }
 
             $user->avatar = $path;
             $user->save();
 
-            Mail::mailer()
-                ->to($user)
-                ->send(new MailInfo());
+//            Mail::mailer()
+//                ->to($user)
+//                ->send(new MailInfo());
 
-            return Redirect::route('profile.edit');
+
+
+           return Redirect::route('profile.edit');
         }
 }

@@ -1,5 +1,21 @@
 version: '3'
 services:
+
+    storage.minio:
+        image: 'minio/minio:latest'
+        ports:
+            - '9000:9000'
+            - '9009:9009'
+        volumes:
+            - './volumes/storages/minio:/data'
+        env_file:
+            - .env
+        command: 'server --console-address :9009 /data'
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        networks:
+            - sail
+
     laravel.test:
         build:
             context: ./vendor/laravel/sail/runtimes/8.2
@@ -23,11 +39,13 @@ services:
         networks:
             - sail
         depends_on:
+            - storage.minio
             - mysql
             - redis
             - meilisearch
             - mailpit
             - selenium
+
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
@@ -49,7 +67,7 @@ services:
                 - CMD
                 - mysqladmin
                 - ping
-                - '-p${DB_PASSWORD}'
+                - '-p$DB_PASSWORD'
             retries: 3
             timeout: 5s
     redis:
@@ -99,6 +117,7 @@ services:
             - '/dev/shm:/dev/shm'
         networks:
             - sail
+
 networks:
     sail:
         driver: bridge
@@ -108,4 +127,6 @@ volumes:
     sail-redis:
         driver: local
     sail-meilisearch:
+        driver: local
+    sail-minio:
         driver: local

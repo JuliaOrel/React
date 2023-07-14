@@ -237,6 +237,10 @@
       <path value="$PROJECT_DIR$/posts-app/vendor/laravel/breeze" />
       <path value="$PROJECT_DIR$/posts-app/vendor/inertiajs/inertia-laravel" />
       <path value="$PROJECT_DIR$/posts-app/vendor/tightenco/ziggy" />
+      <path value="$PROJECT_DIR$/posts-app/vendor/league/flysystem-aws-s3-v3" />
+      <path value="$PROJECT_DIR$/posts-app/vendor/mtdowling/jmespath.php" />
+      <path value="$PROJECT_DIR$/posts-app/vendor/aws/aws-crt-php" />
+      <path value="$PROJECT_DIR$/posts-app/vendor/aws/aws-sdk-php" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
