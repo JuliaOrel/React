@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Profile;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\RequestAvatarUpdate;
+use App\Jobs\TestJob;
 use App\Mail\MailInfo;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -47,6 +48,8 @@ class UpdateAvatarController extends Controller
 //            Mail::mailer()
 //                ->to($user)
 //                ->send(new MailInfo());
+
+            $job=TestJob::dispatch()->delay(now()->addMinutes(2));
 
 
 

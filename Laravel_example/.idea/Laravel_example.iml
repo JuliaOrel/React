@@ -239,6 +239,7 @@
       <excludeFolder url="file://$MODULE_DIR$/posts-app/vendor/aws/aws-sdk-php" />
       <excludeFolder url="file://$MODULE_DIR$/posts-app/vendor/league/flysystem-aws-s3-v3" />
       <excludeFolder url="file://$MODULE_DIR$/posts-app/vendor/mtdowling/jmespath.php" />
+      <excludeFolder url="file://$MODULE_DIR$/posts-app/vendor/laravel/horizon" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
