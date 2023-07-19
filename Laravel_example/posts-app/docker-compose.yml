@@ -9,22 +9,22 @@ services:
             - sail
 
     socket.jonny:
-            build: ./socket_instance
-            ports:
-                - "3000:3000"
-            volumes:
-                - ./socket_instance:/usr/src/app
-            command: sh -c " npm install && npm start "
-            extra_hosts:
-                - 'host.docker.internal:host-gateway'
-            networks:
-                - sail
-            depends_on:
-                - redis.socket
-            environment:
-                - SERVER_NAME=socket.jonny
-            env_file:
-                - .env
+        build: ./socket_instance
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./socket_instance:/usr/src/app
+        command: sh -c " npm install && npm start "
+        extra_hosts:
+            - 'host.docker.internal:host-gateway'
+        networks:
+            - sail
+        depends_on:
+            - redis.socket
+        environment:
+            - SERVER_NAME=socket.jonny
+        env_file:
+            - .env
 
     storage.minio:
         image: 'minio/minio:latest'

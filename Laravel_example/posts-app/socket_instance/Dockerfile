@@ -5,5 +5,5 @@ WORKDIR /usr/src/app
 COPY . .
 RUN npm install
 
-# Set up a default command
-CMD [ "npm","start" ]
+#Set up a default command
+CMD [ "npm", "start" ]
