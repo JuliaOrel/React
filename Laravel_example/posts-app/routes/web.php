@@ -31,6 +31,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 //Админка для моих постов
 Route::middleware('auth')->group(function () {
+    Route::get('/socket', [\App\Http\Controllers\SocketController::class,'index'])->name('socket.index');
+
     Route::resource('/profile/posts', \App\Http\Controllers\UserPostController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

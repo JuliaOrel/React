@@ -10,6 +10,8 @@ services:
 
     socket.jonny:
             build: ./socket_instance
+            ports:
+                - "3000:3000"
             volumes:
                 - ./socket_instance:/usr/src/app
             command: sh -c " npm install && npm start "
