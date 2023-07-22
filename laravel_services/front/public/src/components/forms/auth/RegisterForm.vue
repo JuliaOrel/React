@@ -44,7 +44,7 @@ async function onSubmit(data) {
           <div class="invalid-feedback">{{ errors.password }}</div>
         </div>
         <div class="form-group">
-          <label>Conform</label>
+          <label>Confirm</label>
           <Field name="conform_password" type="password" class="form-control" :class="{ 'is-invalid': errors.password }" />
           <div class="invalid-feedback">{{ errors.password }}</div>
         </div>

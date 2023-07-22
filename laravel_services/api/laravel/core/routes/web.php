@@ -3,10 +3,11 @@
 use App\Http\Controllers\SocketController;
 use Illuminate\Support\Facades\Route;
 Route::get('/api/laravel/', function(){
+    \Illuminate\Support\Facades\Log::debug('test');
     return view ('welcome');
 });
-Route::get('/socket', [SocketController::class, 'index'])->name('socket.index');
-Route::get('/socket/emit', [SocketController::class, 'emit'])->name('socket.emit');
+
+Route::get('/api/socket/emit', [SocketController::class, 'emit'])->name('socket.emit');
 /*
 |--------------------------------------------------------------------------
 | Web Routes

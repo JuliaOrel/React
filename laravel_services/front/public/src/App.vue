@@ -1,8 +1,7 @@
 <script setup>
 import {onMounted} from "vue";
 import {useSocketMainStore} from "@/stores/sockets/socket.main";
-import RegisterForm from "@/components/forms/auth/RegisterForm.vue";
-import Socket from './views/Socket.vue';
+
 
 
 
@@ -15,7 +14,7 @@ onMounted( () => {
 <template>
   <header> Public 1 </header>
 <main>
-      <Socket></Socket>
+    <RouterView></RouterView>
   </main>
   <footer> &copy; ItStep 2023 </footer>
 

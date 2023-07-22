@@ -7,7 +7,12 @@ const router = createRouter({
     {
       path: '/',
       name: 'public.home',
-      component: HomeView
+      component: ()=>import('@/views/HomeView.vue')
+    },
+    {
+      path: '/socket',
+      name: 'socket',
+      component: ()=>import('@/views/Socket.vue')
     },
     {
       path: '/about',

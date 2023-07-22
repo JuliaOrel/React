@@ -35,10 +35,12 @@ socket.on('ping', (data) => {
 
 
 const doSend = () => {
-    fetch('/socket/emit')
+    fetch('/api/socket/emit')
         .then(res => res.text())
         .then(txt => {
-            console.log('ok')
+            console.log('ok');
+            console.log(txt);
+
         })
         .catch( err => {
             toast.error(err)

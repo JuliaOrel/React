@@ -12,7 +12,8 @@ class SocketController extends Controller
     }
 
     function index(){
-        return view('Socket');
+
+        //return redirect()->away('http://localhost/api/socket');
     }
 
     function emit() {
