@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -13,6 +14,11 @@ const router = createRouter({
       path: '/socket',
       name: 'socket',
       component: ()=>import('@/views/Socket.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: ()=>import('@/components/forms/auth/RegisterForm.vue')
     },
     {
       path: '/about',
