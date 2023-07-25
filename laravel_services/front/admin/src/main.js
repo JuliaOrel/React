@@ -1,4 +1,5 @@
 // Главная стилистика
+import 'admin-lte/dist/css/adminlte.min.css'
 import './assets/main.css'
 
 
