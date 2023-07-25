@@ -26,7 +26,7 @@ export const useAuthStore = defineStore('auth.store', {
                 } else {
                     toast.error("Error")
                     if (res.errors) {
-                        MyLog(res.errors)
+                        myLog(res.errors)
                     }
                 }
 
@@ -34,9 +34,34 @@ export const useAuthStore = defineStore('auth.store', {
                 .catch(err => {
                     this.isPreload = false
                     toast.error("Error")
-                    MyLog(err)
+                    myLog(err)
                 })
 
-        }
+        },
+        login(data) {
+            this.isPreload = true;
+            myFetch('/api/login', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            }).then(res => {
+                this.isPreload = false
+                if (res.success) {
+                    this.user = res.user;
+                    // this.token = res.authorization.token
+                } else {
+                    toast.error("Error")
+                    if (res.errors) {
+                        myLog(res.errors)
+                    }
+                }
+            }).catch(err => {
+                this.isPreload = false
+                toast.error("Error")
+                myLog(err)
+            })
+        },
     }
 })

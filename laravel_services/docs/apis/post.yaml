@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: My Auth
+  title: My Posts
   description: |-
-    Описание запросов для регистрации и авторизации
+    Описание для работы с постами
   termsOfService: http://swagger.io/terms/
   contact:
     email: keeper@ninydev.com
@@ -15,17 +15,17 @@ servers:
 
 
 tags:
-  - name: auth
-    description: Работа с постами
+  - name: posts
+    description: Процесс работы с постами
 
 
 paths:
 
-  /register:
+  /posts:
     post:
       tags:
-        - auth
-      description: регистрирует пользователя в системе
+        - posts
+      description: работа с постами
       operationId: auth.register
       requestBody:
         description: нам нужно отправить сущность пользователь

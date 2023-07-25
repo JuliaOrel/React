@@ -1,0 +1,16 @@
+{
+  "name": "documentation",
+  "version": "0.1.0",
+  "private": true,
+  "author": {
+    "name": "Oleksandr Nykytin",
+    "email": "keeper@ninydev.com"
+  },
+  "type": "module",
+  "dependencies": {
+
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
