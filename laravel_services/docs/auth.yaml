@@ -16,7 +16,7 @@ servers:
 
 tags:
   - name: auth
-    description: Работа с постами
+    description: Процесс регистрации пользователя
 
 
 paths:

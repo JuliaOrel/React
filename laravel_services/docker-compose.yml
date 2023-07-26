@@ -101,7 +101,7 @@ services:
         networks:
             - pv121
         env_file:
-            - ./docs/apis/doc.env
+            - docs/doc.env
 
     nginx:
         image: nginx:alpine
