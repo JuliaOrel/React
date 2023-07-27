@@ -25,7 +25,7 @@ async function onSubmit(data) {
   </div>
 
   <div v-else class="card m-3">
-    <h4 class="card-header">Send Email</h4>
+    <h4 class="card-header">Registration</h4>
     <div class="card-body">
       <Form @submit="onSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }">
         <div class="form-group">
