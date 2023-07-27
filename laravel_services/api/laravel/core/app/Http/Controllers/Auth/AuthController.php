@@ -28,12 +28,14 @@ class AuthController extends Controller
 
         if (!$token) {
             return response()->json([
+                'success' => false,
                 'message' => 'Unauthorized',
             ], 401);
         }
 
         $user = Auth::user();
         return response()->json([
+            'success' => true,
             'user' => $user,
             'authorization' => [
                 'token' => $token,

@@ -51,8 +51,9 @@ export const useAuthStore = defineStore('auth.store', {
             }).then(res => {
                 this.isPreload = false
                 if (res.success) {
+                    console.log(res.authorization.token);
                     this.user = res.user;
-                    this.token = res.authorization.token
+                    this.token = res.authorization.token;
                 } else {
                     toast.error("Error")
                     if (res.errors) {
