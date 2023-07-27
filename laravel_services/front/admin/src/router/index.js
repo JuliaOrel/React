@@ -26,7 +26,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
 
   const authStore = useAuthStore()
-
+  //Таким образом фронт защищает и не показывает страницы незалогиненному пользователю
   // Если я пришел на страницу логина - то иду дальше
   if(to.fullPath === '/login') {
     next()
