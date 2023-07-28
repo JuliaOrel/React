@@ -2,6 +2,7 @@ import {defineStore} from "pinia";
 import {toast} from "vue3-toastify";
 import {io} from "socket.io-client";
 import myLog from "@/helpers/myLog";
+import {useAuthStore} from "../auth.store";
 
 
 export const useSocketMainStore = defineStore('socket.main', {
@@ -14,8 +15,21 @@ export const useSocketMainStore = defineStore('socket.main', {
          * Процесс установки соединения
          */
         connect() {
+            const authStore=useAuthStore()
+            const token=authStore.token;
+            if(token===null){
+                toast.error("You dont have rights for connection")
+                return;
+            }
             if (this.isConnect) return
-            this.socket = io('/')
+            this.socket = io('/', {
+
+                auth: {
+                    token: token
+                }
+            })
+
+
             this.isConnect = true
 
             // Реакция на сообщение с сервера
@@ -26,6 +40,7 @@ export const useSocketMainStore = defineStore('socket.main', {
             //Реакция на любое сообщение
             this.socket.on('message', (data) => {
                 myLog('Catch message from server:', data);
+                toast.success(data);
             });
 
             this.socket.on('user.id.10', (data) => {

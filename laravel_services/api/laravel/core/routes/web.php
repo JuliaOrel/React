@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\SocketController;
+use App\Mail\MailInfo;
 use Illuminate\Support\Facades\Route;
 Route::get('/api/laravel/', function(){
     \Illuminate\Support\Facades\Log::debug('test');
@@ -8,6 +10,8 @@ Route::get('/api/laravel/', function(){
 });
 
 Route::get('/api/socket/emit', [SocketController::class, 'emit'])->name('socket.emit');
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

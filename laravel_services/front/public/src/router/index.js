@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import {useAuthStore} from "../stores/auth.store";
 
 
 
@@ -28,9 +29,27 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
+      meta: {auth: true},
       component: () => import('@/views/AboutView.vue')
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+
+  const authStore = useAuthStore()
+
+  // Если я пришел на страницу логина - то иду дальше
+  if(to.fullPath === '/login') {
+    next()
+  }
+
+  if(to.matched.some((record) => record.meta.auth) && !authStore.isLogin) {
+    next('login')
+  } else {
+    next()
+  }
+
+});
 
 export default router

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\Users\AdminUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,3 +30,6 @@ Route::controller(AuthController::class)->group(function () {
 });
 
 Route::get('admin/users', [AdminUserController::class, 'index'])->name('api.admin.users.index');
+
+//Route for mailing
+Route::post('send-mail', [MailController::class, 'sendMail']);
