@@ -43,6 +43,64 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/hasError'
+  /login:
+    post:
+      tags:
+        - auth
+      description: user's authentification
+      operationId: auth.login
+      requestBody:
+        description: we need to send users data
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userLogin'
+        required: true
+      responses:
+        '200':
+          description: successful authentification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authSuccess'
+        '401':
+          description: Неавторизованный доступ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/hasError'
+
+  /logout:
+    get:
+      tags:
+        - auth
+      description: Выход пользователя из системы
+      operationId: auth.logout
+      responses:
+        '200':
+          description: Успешный выход
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/logoutSuccess'
+      security:
+        - bearerAuth: [ ]
+
+  /refresh:
+    get:
+      tags:
+        - auth
+      description: Обновление токена доступа
+      operationId: auth.refresh
+      responses:
+        '200':
+          description: Успешное обновление токена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/authSuccess'
+      security:
+        - bearerAuth: [ ]
 
 components:
   schemas:
@@ -76,3 +134,60 @@ components:
         - username
         - email
         - password
+
+    userLogin:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: Адрес электронной почты пользователя
+          example: user@example.com
+        password:
+          type: string
+          format: password
+          description: Пароль пользователя
+          example: mysecretpassword
+
+    authSuccess:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Успешна ли была операция
+          example: true
+        user:
+          $ref: '#/components/schemas/User'
+        authorization:
+          type: object
+          properties:
+            token:
+              type: string
+              description: Токен доступа
+              example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJleHAiOjE2MzAwMzIxMzB9.3h6ueX-6Tb8ZL2gV40DStz1j2sZ4-X_L6fS3ztkzZ6g
+            type:
+              type: string
+              description: Тип токена
+              example: bearer
+
+    logoutSuccess:
+      type: object
+      properties:
+        success:
+          type: boolean
+          description: Успешен ли был выход
+          example: true
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          format: email
+          example: user@example.com
