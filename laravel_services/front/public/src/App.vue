@@ -1,6 +1,7 @@
 <script setup>
 import {onMounted} from "vue";
 import {useSocketMainStore} from "@/stores/sockets/socket.main";
+import MyHeader from "./components/MyHeader.vue";
 
 
 
@@ -12,18 +13,8 @@ onMounted( () => {
 </script>
 
 <template>
-  <header> Public 1 </header>
+    <MyHeader></MyHeader>
 <main>
-    <aside class="main-sidebar">  main-main-sidebar
-        <nav>
-            <ul>
-                <li><RouterLink to="/">Главная</RouterLink></li>
-                <li><RouterLink to="/about">About</RouterLink></li>
-            </ul>
-
-
-        </nav>
-    </aside>
     <RouterView></RouterView>
   </main>
   <footer> &copy; ItStep 2023 </footer>
