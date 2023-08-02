@@ -11,7 +11,6 @@ class ReadPostController extends Controller
     public function index(Request $request){
         $userPosts = Post::query()
             ->with('author')
-            ->orderByDesc('update_at')
             ->paginate($request->input('perPage', 10));
         return $userPosts;
     }

@@ -1,5 +1,9 @@
 <script setup>
 
+
+import {useAuthStore} from "../stores/auth.store";
+
+const authStore = useAuthStore()
 </script>
 
 <template>
@@ -12,12 +16,25 @@
         </div>
 
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2"><RouterLink to="/login">Login</RouterLink></button>
-            <button type="button" class="btn btn-outline-primary me-2"><RouterLink to="/register">Register</RouterLink></button>
+            <!-- Условное отображение кнопки "Выйти" -->
+            <button v-if="authStore.isLogin" type="button" class="btn btn-outline-primary me-2" @click="logout">Logout</button>
+            <button v-if="!authStore.isLogin" type="button" class="btn btn-outline-primary me-2"><RouterLink to="/login">Login</RouterLink></button>
+            <button v-if="!authStore.isLogin" type="button" class="btn btn-outline-primary me-2"><RouterLink to="/register">Register</RouterLink></button>
         </div>
     </header>
 </template>
+<script>
 
+const logout = () => {
+    // Вызов действия "logout" из хранилища authStore
+    authStore.logout();
+};
+export default {
+    setup() {
+        return { logout };
+    },
+};
+</script>
 <style scoped>
 header{
     background: #f0f0f0;
