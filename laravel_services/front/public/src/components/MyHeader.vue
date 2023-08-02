@@ -7,7 +7,7 @@
 
         <div class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <button type="button" class="btn btn-secondary"><RouterLink to="/">Home</RouterLink></button>
-            <button type="button" class="btn btn-info"><RouterLink to="/about">Add recipe</RouterLink></button>
+            <button type="button" class="btn btn-info"><RouterLink to="/posts">Recipes</RouterLink></button>
             <button type="button" class="btn btn-secondary"><RouterLink to="/about">About</RouterLink></button>
         </div>
 

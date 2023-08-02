@@ -33,3 +33,5 @@ Route::get('admin/users', [AdminUserController::class, 'index'])->name('api.admi
 
 //Route for mailing
 Route::post('send-mail', [MailController::class, 'sendMail']);
+
+Route::get('posts/read/',[\App\Http\Controllers\Posts\ReadPostController::class,'index'])->name('post.read.all');
