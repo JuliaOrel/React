@@ -39,7 +39,7 @@ export default {
                 title: "",
                 image_url: "",
                 body: "",
-                author_id: "authStore.user.name",
+                author_id: authStore.user.id,
                 slug: ""
             },
         };
@@ -50,7 +50,7 @@ export default {
                 // if (this.post.id !== undefined) {
                 //     await axios.put(`/api/posts/${this.post.id}`, this.post);
                 // } else {
-                    myFetch('/api/posts', {
+                    myFetch('/api/user/posts', {
                         method: 'POST',
                         body: JSON.stringify(this.post),
                         headers: {

@@ -9,7 +9,7 @@ export const useReadPostsStore = defineStore('readPost', {
     }), actions: {
         loadPosts(page = 0, perPage = 10) {
             this.isPreload = true
-            myFetch('/api/posts/read?page=' + page + '&perPage=' + perPage)
+            myFetch('/api/pub/posts/read?page=' + page + '&perPage=' + perPage)
                 .then(res => {
                     this.posts = res.data
                     this.isPreload = false
