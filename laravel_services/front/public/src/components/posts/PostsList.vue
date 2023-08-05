@@ -1,9 +1,11 @@
 <script setup>
 import {useReadPostsStore} from "../../stores/readPostsStore";
+import {useAuthStore} from "../../stores/auth.store";
 import {onMounted} from "vue";
 
-const readPostStore=useReadPostsStore()
-onMounted( ()=>{
+const readPostStore = useReadPostsStore()
+const authStore = useAuthStore();
+onMounted(() => {
     readPostStore.loadPosts()
 })
 </script>
@@ -12,11 +14,15 @@ onMounted( ()=>{
     <div v-if="readPostStore.isPreload">
         Loading
     </div>
-<ul v-else>
-<li v-for="post in readPostStore.posts" :key="post.id">
-    {{post.title}}
-</li>
-</ul>
+    <ul v-else>
+        <li v-for="post in readPostStore.posts" :key="post.id">
+            {{ post.title }}
+        </li>
+    </ul>
+    <div>
+        <button v-if="authStore.isLogin" type="button" class="btn btn-secondary"><RouterLink to="/createposts">Add Recipe</RouterLink></button>
+    </div>
+
 </template>
 
 <style scoped>

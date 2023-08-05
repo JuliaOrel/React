@@ -28,7 +28,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('logout', 'logout');
     Route::post('refresh', 'refresh');
 });
-
+Route::apiResource('posts', \App\Http\Controllers\Posts\UserPostController::class);
 Route::get('admin/users', [AdminUserController::class, 'index'])->name('api.admin.users.index');
 
 //Route for mailing

@@ -65,7 +65,7 @@ export const useAuthStore = defineStore('auth.store', {
                     this.isLogin=true;
                     myLocalStorage.setItem('user', res.user);
                     myLocalStorage.setItem('isLogin', true);
-                    myLocalStorage.setItem('token', res.token);
+                    myLocalStorage.setItem('token', res.authorization.token);
                     router.push('/');
                 } else {
                     toast.error("Error")

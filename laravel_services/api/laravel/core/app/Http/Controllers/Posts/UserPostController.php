@@ -8,6 +8,69 @@ use Illuminate\Http\Request;
 
 class UserPostController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        //
+    }
 
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $p = new Post();
+        $p->setAttribute('title', $request->input('title'));
+        $p->setAttribute('slug', $request->input('slug'));
+        $p->setAttribute('body', $request->input('body'));
+        $p->setAttribute('img_url', $request->input('img_url'));
+        $p->setAttribute('author_id', $request->input('author_id'));
+
+        // тут нужно использовать try - catch - что бы анализировать ошибку
+        $p->save();
+
+        return $p;
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
+    }
 }
