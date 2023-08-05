@@ -4,13 +4,14 @@ import router from "@/router";
 import myLog from "@/helpers/myLog";
 import {toast} from "vue3-toastify";
 import myLocalStorage from "../helpers/myLocalStorage";
+import {ref} from "vue";
 
 
 
 export const useAuthStore = defineStore('auth.store', {
     state: () => ({
         isPreload: false,
-        isLogin: myLocalStorage.getItem('isLogin') || null,
+        isLogin: myLocalStorage.getItem('isLogin') || false,
         user: myLocalStorage.getItem('user') || null,
         token: myLocalStorage.getItem('token') ||null
     }), actions: {
@@ -76,7 +77,7 @@ export const useAuthStore = defineStore('auth.store', {
         logout() {
             // Здесь выполняется выход из системы
             // Сброс состояния
-            this.isLogin = false;
+            this.isLogin= false;
             this.user = null;
             this.token = null;
 
