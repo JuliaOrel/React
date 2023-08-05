@@ -4,7 +4,12 @@
 import {useAuthStore} from "../stores/auth.store";
 
 
-const authStore = useAuthStore()
+const authStore = useAuthStore();
+const logout = () => {
+    // Вызов действия "logout" из хранилища authStore
+    authStore.logout();
+};
+
 </script>
 
 <template>
@@ -28,18 +33,7 @@ const authStore = useAuthStore()
         </div>
     </header>
 </template>
-<script>
 
-const logout = () => {
-    // Вызов действия "logout" из хранилища authStore
-    authStore.logout();
-};
-export default {
-    setup() {
-        return { logout };
-    },
-};
-</script>
 <style scoped>
 header{
     background: #f0f0f0;
@@ -52,7 +46,7 @@ button{
 }
 
 .btn-info{
-    background: #98fb98;
+    background: rgb(66,224,245);
     border: none;
 }
 

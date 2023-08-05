@@ -62,6 +62,11 @@ export const useAuthStore = defineStore('auth.store', {
                     console.log(res.authorization.token);
                     this.user = res.user;
                     this.token = res.authorization.token;
+                    this.isLogin=true;
+                    myLocalStorage.setItem('user', res.user);
+                    myLocalStorage.setItem('isLogin', true);
+                    myLocalStorage.setItem('token', res.token);
+                    router.push('/');
                 } else {
                     toast.error("Error")
                     if (res.errors) {
@@ -69,7 +74,8 @@ export const useAuthStore = defineStore('auth.store', {
                     }
                 }
             }).catch(err => {
-                this.isPreload = false
+                this.isPreload = false;
+                this.isLogin=false;
                 toast.error("Error")
                 myLog(err)
             })
@@ -81,13 +87,9 @@ export const useAuthStore = defineStore('auth.store', {
             this.user = null;
             this.token = null;
 
-            // Выполните дополнительные действия по выходу из системы, если нужно
-            // Например, очистка данных в localStorage или другие действия
-
-            // Пример очистки данных в localStorage
-            myLocalStorage.removeItem('user');
-            myLocalStorage.removeItem('isLogin');
-            myLocalStorage.removeItem('token');
+            myLocalStorage.setItem('user', null);
+            myLocalStorage.setItem('isLogin', false);
+            myLocalStorage.setItem('token', null);
 
             // Пример перенаправления на страницу входа после выхода
             router.push('/login');
