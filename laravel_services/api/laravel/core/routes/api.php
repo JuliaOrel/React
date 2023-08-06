@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\Posts\UploadFileController;
 use App\Http\Controllers\Users\AdminUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,8 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('refresh', 'refresh');
 });
 Route::apiResource('/user/posts', \App\Http\Controllers\Posts\UserPostController::class);
+
+Route::post('/user/uploadFiles', [UploadFileController::class, 'saveFile'])->name('upload.files.save.file');
 Route::get('admin/users', [AdminUserController::class, 'index'])->name('api.admin.users.index');
 
 //Route for mailing

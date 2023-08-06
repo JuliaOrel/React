@@ -7,8 +7,8 @@
                 <input v-model="post.title" type="text" id="title" required />
             </div>
             <div>
-                <label for="image_url">Image URL:</label>
-                <input v-model="post.image" type="text" id="image" required />
+                <UploadForm></UploadForm>
+
             </div>
             <div>
                 <label for="body">Text:</label>
@@ -29,10 +29,12 @@
 import myFetch from "@/helpers/myFetch";
 
 import {useAuthStore} from "../stores/auth.store";
+import UploadForm from "@/components/forms/UploadForm.vue";
 
 
 const authStore = useAuthStore();
 export default {
+    components: {UploadForm},
     data() {
         return {
             post: {
