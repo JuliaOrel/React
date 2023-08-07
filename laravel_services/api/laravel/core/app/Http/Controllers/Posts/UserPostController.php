@@ -48,18 +48,17 @@ class UserPostController extends Controller
 
 
         // Вставляем данные поста в базу данных
-        DB::table('posts')->insert([
-            'id' => Str::uuid()->toString(),
-            'title' => $request->input('title'),
-            'body' => $request->input('body'),
-            'img_url' => $imagePath,
-            'author_id' => $request->input('author_id'),
-            'slug' => $request->input('slug'),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        $p = new Post();
+        $p->setAttribute('title', $request->input('title'));
+        $p->setAttribute('slug', $request->input('slug'));
+        $p->setAttribute('author_id', $request->input('author_id'));
+        $p->setAttribute('body', $request->input('body'));
+        $p->$imagePath;
 
-        return response()->json(['message' => 'Пост успешно добавлен'], 201);
+        // тут нужно использовать try - catch - что бы анализировать ошибку
+        $p->save();
+
+        return $p;
     }
 
     /**
