@@ -2,7 +2,7 @@
     <div>
         <label>Image</label>
         <input type="file" @change="onFileChange" />
-        <button @click="uploadImage">Upload</button>
+<!--        <button @click="uploadImage">Upload</button>-->
     </div>
 </template>
 
@@ -19,16 +19,16 @@ export default {
         onFileChange(event) {
             this.file = event.target.files[0];
         },
-        uploadImage() {
-            let formData = new FormData();
-            formData.append("image", formData);
-            myFetch('/api/user/upload', {
-                method: 'POST',
-                body: JSON.stringify(this.file),
-                headers: {
-                    "Content-Type": "application/json",
-                }
-            })
+        // uploadImage() {
+        //     let formData = new FormData();
+        //     formData.append("image", formData);
+        //     myFetch('/api/user/upload', {
+        //         method: 'POST',
+        //         body: JSON.stringify(this.file),
+        //         headers: {
+        //             "Content-Type": "application/json",
+        //         }
+        //     })
 
 
 

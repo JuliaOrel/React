@@ -31,7 +31,7 @@ Route::controller(AuthController::class)->group(function () {
 });
 Route::apiResource('/user/posts', \App\Http\Controllers\Posts\UserPostController::class);
 
-Route::post('/user/uploadFiles', [UploadFileController::class, 'saveFile'])->name('upload.files.save.file');
+//Route::post('/user/uploadFiles', [UploadFileController::class, 'saveFile'])->name('upload.files.save.file');
 Route::get('admin/users', [AdminUserController::class, 'index'])->name('api.admin.users.index');
 
 //Route for mailing

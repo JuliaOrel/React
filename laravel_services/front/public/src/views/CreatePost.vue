@@ -7,7 +7,11 @@
                 <input v-model="post.title" type="text" id="title" required />
             </div>
             <div>
-                <UploadForm></UploadForm>
+                <div>
+                    <label>Image</label>
+                    <input type="file" @change="onFileChange" />
+                    <!--        <button @click="uploadImage">Upload</button>-->
+                </div>
 
             </div>
             <div>
@@ -29,17 +33,15 @@
 import myFetch from "@/helpers/myFetch";
 
 import {useAuthStore} from "../stores/auth.store";
-import UploadForm from "@/components/forms/UploadForm.vue";
-
 
 const authStore = useAuthStore();
 export default {
-    components: {UploadForm},
+
     data() {
         return {
             post: {
                 title: "",
-                image_url: "",
+                img_url: null,
                 body: "",
                 author_id: authStore.user.id,
                 slug: ""
@@ -64,6 +66,9 @@ export default {
             } catch (error) {
                 console.error('Error:', error);
             }
+        },
+        onFileChange(event) {
+            this.post.img_url = event.target.files[0];
         },
     },
 };

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Posts;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UserPostController extends Controller
 {
@@ -29,17 +32,34 @@ class UserPostController extends Controller
      */
     public function store(Request $request)
     {
-        $p = new Post();
-        $p->setAttribute('title', $request->input('title'));
-        $p->setAttribute('slug', $request->input('slug'));
-        $p->setAttribute('body', $request->input('body'));
-        $p->setAttribute('img_url', $request->input('img_url'));
-        $p->setAttribute('author_id', $request->input('author_id'));
+        $imagePath = null;
+        if (! $request->hasFile('img_url')) {
+            return 'No files in request';
+        }
+        $image = $request->file('img_url');
+        $imageName = Str::uuid()->toString() . '.' . $image->getClientOriginalExtension();
 
-        // тут нужно использовать try - catch - что бы анализировать ошибку
-        $p->save();
+        // Загружаем изображение в MinIO
+            $bucketName = 'storage';
+            Storage::disk('minio')->putFileAs($bucketName, $image, $imageName);
 
-        return $p;
+            // Формируем путь к изображению в MinIO
+            $imagePath = Storage::disk('minio')->url("$bucketName/$imageName");
+
+
+        // Вставляем данные поста в базу данных
+        DB::table('posts')->insert([
+            'id' => Str::uuid()->toString(),
+            'title' => $request->input('title'),
+            'body' => $request->input('body'),
+            'img_url' => $imagePath,
+            'author_id' => $request->input('author_id'),
+            'slug' => $request->input('slug'),
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return response()->json(['message' => 'Пост успешно добавлен'], 201);
     }
 
     /**
