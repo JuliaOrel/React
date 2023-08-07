@@ -53,7 +53,8 @@ class UserPostController extends Controller
         $p->setAttribute('slug', $request->input('slug'));
         $p->setAttribute('author_id', $request->input('author_id'));
         $p->setAttribute('body', $request->input('body'));
-        $p->$imagePath;
+        $p->setAttribute('img_url', $imagePath);
+
 
         // тут нужно использовать try - catch - что бы анализировать ошибку
         $p->save();

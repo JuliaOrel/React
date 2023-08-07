@@ -22,10 +22,16 @@ app.use(express.urlencoded({ extended: false }));
 const bodyParser=require('body-parser')
 app.use(bodyParser.json());
 
+// Для загрузки файлов
+const fileUpload = require('express-fileupload');
+app.use(fileUpload());
 
 //маршрутизация
 let postsRouter=require('./routes/posts')
 app.use('/api/posts', postsRouter)
+
+const uploadFileRouter = require('./routes/uploadFile')
+app.use('/api/uploadFile', uploadFileRouter)
 /*let indexRouter = require('./routes/index');
 let usersRouter = require('./routes/users');
 app.use('/', indexRouter);
