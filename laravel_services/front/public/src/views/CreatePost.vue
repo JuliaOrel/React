@@ -1,3 +1,43 @@
+<script setup>
+
+import myFetch from "@/helpers/myFetch";
+
+import {useAuthStore} from "../stores/auth.store";
+
+const authStore = useAuthStore();
+const post = {
+    title: "",
+    img_url: null,
+    body: "",
+    author_id: authStore.user.id,
+    slug: "",
+};
+
+async function addPost() {
+    try {
+        if (!post.slug) {
+            console.error("Slug is required.");
+            return;
+        }
+
+        const frmData = new FormData();
+        frmData.append('post', JSON.stringify(post));
+        await myFetch('/api/user/posts', {
+            method: 'POST',
+            body: frmData,
+        });
+
+        console.log("Adding new post:", post);
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+function onFileChange(event) {
+    post.img_url = event.target.files[0];
+}
+</script>
+
 <template>
     <div>
         <h2>Add New Post</h2>
@@ -10,9 +50,7 @@
                 <div>
                     <label>Image</label>
                     <input type="file" @change="onFileChange" />
-                    <!--        <button @click="uploadImage">Upload</button>-->
                 </div>
-
             </div>
             <div>
                 <label for="body">Text:</label>
@@ -22,56 +60,11 @@
                 <label for="slug">Slug:</label>
                 <input v-model="post.slug" type="text" id="slug" required />
             </div>
-
             <button type="submit">Add Post</button>
         </form>
     </div>
 </template>
 
-<script>
-
-import myFetch from "@/helpers/myFetch";
-
-import {useAuthStore} from "../stores/auth.store";
-
-const authStore = useAuthStore();
-export default {
-
-    data() {
-        return {
-            post: {
-                title: "",
-                img_url: null,
-                body: "",
-                author_id: authStore.user.id,
-                slug: ""
-            },
-        };
-    },
-    methods: {
-        async addPost() {
-            try {
-                // if (this.post.id !== undefined) {
-                //     await axios.put(`/api/posts/${this.post.id}`, this.post);
-                // } else {
-                const frmData = new FormData();
-                frmData.append('post', this.post);
-                    myFetch('/api/user/posts', {
-                        method: 'POST',
-                        body: JSON.stringify(frmData),
-                    }),
-                //}
-                console.log("Adding new post:", this.post);
-            } catch (error) {
-                console.error('Error:', error);
-            }
-        },
-        onFileChange(event) {
-            this.post.img_url = event.target.files[0];
-        },
-    },
-};
-</script>
 
 
 
