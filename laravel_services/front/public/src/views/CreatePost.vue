@@ -21,7 +21,11 @@ async function addPost() {
         }
 
         const frmData = new FormData();
-        frmData.append('post', JSON.stringify(post));
+        frmData.append('post', post.title);
+        frmData.append('post', post.img_url);
+        frmData.append('post', post.body);
+        frmData.append('post', post.author_id);
+        frmData.append('post', post.slug);
         await myFetch('/api/user/posts', {
             method: 'POST',
             body: frmData,
