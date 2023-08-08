@@ -33,8 +33,10 @@ class UserPostController extends Controller
      */
     public function store(Request $request)
     {
+        Log::debug('slug', [json_encode( $request->file('img_url'))] );
         $imagePath = null;
         if (! $request->hasFile('img_url')) {
+            Log::debug('slug', ['nofile']);
             return 'No files in request';
         }
         $image = $request->file('img_url');
