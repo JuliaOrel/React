@@ -54,12 +54,11 @@ export default {
                 // if (this.post.id !== undefined) {
                 //     await axios.put(`/api/posts/${this.post.id}`, this.post);
                 // } else {
+                const frmData = new FormData();
+                frmData.append('post', this.post);
                     myFetch('/api/user/posts', {
                         method: 'POST',
-                        body: JSON.stringify(this.post),
-                        headers: {
-                            "Content-Type": "application/json",
-                        }
+                        body: JSON.stringify(frmData),
                     }),
                 //}
                 console.log("Adding new post:", this.post);

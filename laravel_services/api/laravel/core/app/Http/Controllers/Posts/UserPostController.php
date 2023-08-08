@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -50,12 +51,13 @@ class UserPostController extends Controller
         // Вставляем данные поста в базу данных
         $p = new Post();
         $p->setAttribute('title', $request->input('title'));
-        $p->setAttribute('slug', $request->input('slug'));
+        $p->setAttribute('slug',
+            Str::slug($request->input('slug', date()), '-'));
         $p->setAttribute('author_id', $request->input('author_id'));
         $p->setAttribute('body', $request->input('body'));
         $p->setAttribute('img_url', $imagePath);
 
-
+        Log::debug('slug', $p->toArray());
         // тут нужно использовать try - catch - что бы анализировать ошибку
         $p->save();
 
