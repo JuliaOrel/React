@@ -23,7 +23,7 @@ async function addPost() {
         const frmData = new FormData();
         frmData.append('title', post.title);
         // frmData.append('img_url', post.img_url, post.img_url.name);
-        frmData.append('img_url', document.getElementById('img_url').files[0],'img_url.webp');
+        frmData.append('img_url', document.getElementById('img_url').files[0]);
         frmData.append('body', post.body);
         frmData.append('author_id', post.author_id);
         frmData.append('slug', post.slug);
@@ -31,9 +31,9 @@ async function addPost() {
          fetch('/api/user/posts', {
              method: 'POST',
              body: frmData,
-             headers: {
-                 'Content-Type': 'multipart/form-data'
-             }
+             // headers: {
+             //     'Content-Type': 'multipart/form-data'
+             // }
         })
             .then(res => {
                 console.log(res)

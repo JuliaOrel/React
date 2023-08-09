@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('slug', 64)->unique()->index();
             $table->string('title', 64);
             $table->text('body');
-            $table->string('img_url', 64)->nullable();
+            $table->string('img_url', 256)->nullable();
             $table->uuid('author_id');
             $table->timestamps();
         });
