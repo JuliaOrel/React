@@ -48,7 +48,7 @@ class UserPostController extends Controller
             Storage::disk('minio')->putFileAs($bucketName, $image, $imageName);
 
             // Формируем путь к изображению в MinIO
-            $imagePath = Storage::disk('minio')->url("$bucketName/$imageName");
+            $imagePath ="http://localhost:9000/".$bucketName."/".$imageName;
 
 
         // Вставляем данные поста в базу данных

@@ -16,7 +16,9 @@ onMounted(() => {
     </div>
     <ul v-else>
         <li v-for="post in readPostStore.posts" :key="post.id">
-            {{ post.title }}
+            <h2>{{ post.title }}</h2>
+            <img :src="post.img_url" width="100">
+            <p>{{ post.body }}</p>
         </li>
     </ul>
     <div>
