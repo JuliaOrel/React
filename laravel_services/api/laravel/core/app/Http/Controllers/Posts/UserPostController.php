@@ -16,9 +16,11 @@ class UserPostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function getPostsById(string $userId)
     {
-        //
+        Log::debug('slug', 'ok');
+        $userPosts = Post::where('author_id', $userId)->get();
+        return $userPosts;
     }
 
     /**

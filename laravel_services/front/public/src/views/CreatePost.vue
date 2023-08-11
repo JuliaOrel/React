@@ -1,6 +1,5 @@
 <script setup>
 
-import myFetch from "@/helpers/myFetch";
 
 import {useAuthStore} from "../stores/auth.store";
 
