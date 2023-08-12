@@ -2,12 +2,19 @@
 import {useReadPostsStore} from "../../stores/readPostsStore";
 import {useAuthStore} from "../../stores/auth.store";
 import {onMounted} from "vue";
+import myFetch from "@/helpers/myFetch";
+import {useMyPostsById} from "@/stores/myPostsStoreById";
 
 const readPostStore = useReadPostsStore()
 const authStore = useAuthStore();
+const myPosts=useMyPostsById();
 onMounted(() => {
     readPostStore.loadPosts()
 })
+
+const fetchUserPosts =() => {
+    myPosts.loadPosts(authStore.user.id);
+};
 </script>
 
 <template>
@@ -24,9 +31,11 @@ onMounted(() => {
     </ul>
     <div>
         <button v-if="authStore.isLogin" type="button" class="btn btn-secondary"><RouterLink to="/createposts">Add Recipe</RouterLink></button>
-        <button v-if="authStore.isLogin" type="button" class="btn btn-secondary">
-            <RouterLink :to="{ name: 'posts.users', params: { userId: authStore.user.id } }">My recipes</RouterLink>
-        </button>
+        <div v-if="authStore.isLogin">
+            <button class="btn btn-secondary" @click="fetchUserPosts">Загрузить мои посты</button>
+
+        </div>
+
     </div>
 
 </template>
