@@ -45,6 +45,7 @@ export const useBlogStore = defineStore('blogStore', {
             })
                 .then(res=> {
                     this.isPreload = false
+                    console.log(res)
                     this.posts.push(res)
                     MyLog(res)
                 })

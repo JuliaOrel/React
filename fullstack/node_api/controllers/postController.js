@@ -1,4 +1,4 @@
-const sendMsgToChatGPT = require('./../config/chatGPT')
+const sendMsgToChatGPT = require('./../config/producerChatGPT')
 
 //Collection of posts
 
@@ -21,8 +21,10 @@ exports.getPost=function(request, response){
 exports.createPosts=async function (request, response){
     let newPost=request.body
     console.log(request.body)
-    newPost.chatGPT = await sendMsgToChatGPT(
-    "Напиши ключевые слова для этого текста. На русском. Не более 10. Ответ раздели запятыми: \n " + newPost.body)
+    sendMsgToChatGPT(newPost)
+    //newPost.id=posts.length
+    //newPost.chatGPT = await sendMsgToChatGPT(
+    //"Напиши ключевые слова для этого текста. На русском. Не более 10. Ответ раздели запятыми: \n " + newPost.body)
     posts.push(newPost)
     response.status(201).send(newPost)
 }
