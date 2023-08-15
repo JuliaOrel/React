@@ -1,6 +1,34 @@
 version: '3'
 services:
 
+  consumer.sendtofront:
+    build: ./consumers/sendToFront
+    volumes:
+      - ./consumers/sendToFront:/usr/src/app
+    command: sh -c " npm install && npm start "
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    networks:
+      - pv121_network
+    environment:
+      - NAME=ConsumerSendToFront
+    env_file:
+      - .env
+
+  consumer.pingator:
+    build: ./consumers/pingator
+    volumes:
+      - ./consumers/pingator:/usr/src/app
+    command: sh -c " npm install && npm start "
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    networks:
+      - pv121_network
+    environment:
+      - NAME=ConsumerPingator
+    env_file:
+      - .env
+
   rabbit.mq:
     image: rabbitmq:3.12.0-management-alpine
     extra_hosts:

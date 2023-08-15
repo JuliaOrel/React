@@ -37,6 +37,8 @@ let usersRouter = require('./routes/users');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);*/
 
+//Запуск пингатора
+require('./config/producerPingator')
 
 
 //Экспорт настроек в главный файл
