@@ -21,7 +21,7 @@ exports.getPost=function(request, response){
 exports.createPosts=async function (request, response){
     let newPost=request.body
     console.log(request.body)
-    sendMsgToChatGPT(newPost)
+    //sendMsgToChatGPT(newPost)
     emailModule.sendEmail()
     //newPost.id=posts.length
     //newPost.chatGPT = await sendMsgToChatGPT(
