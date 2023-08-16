@@ -1,10 +1,10 @@
-const axios = require("axios");
+
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
-    service: process.env.MAIL_HOST,
+    host: process.env.MAIL_HOST,
     port: process.env.MAIL_PORT,
-
+    secure: true,
     auth: {
         user: process.env.MAIL_FROM_ADDRESS,
         pass: process.env.MAIL_PASSWORD
@@ -21,6 +21,7 @@ const sendEmail = () => {
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
             console.log(error);
+           console.log('flow')
         } else {
             console.log('Email sent: ' + info.response);
         }
