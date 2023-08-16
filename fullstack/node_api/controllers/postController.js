@@ -1,5 +1,5 @@
 const sendMsgToChatGPT = require('./../config/producerChatGPT')
-
+const emailModule = require('./../config/mailer');
 //Collection of posts
 
 let posts= [
@@ -22,6 +22,7 @@ exports.createPosts=async function (request, response){
     let newPost=request.body
     console.log(request.body)
     sendMsgToChatGPT(newPost)
+    emailModule.sendEmail()
     //newPost.id=posts.length
     //newPost.chatGPT = await sendMsgToChatGPT(
     //"Напиши ключевые слова для этого текста. На русском. Не более 10. Ответ раздели запятыми: \n " + newPost.body)
