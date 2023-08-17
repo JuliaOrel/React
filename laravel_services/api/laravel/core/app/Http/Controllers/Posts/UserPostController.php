@@ -16,14 +16,14 @@ class UserPostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function getPostsById(string $userId)
-    {
-        Log::debug('slug', 'ok');
-        $userPosts = Post::query()
-            ->where('author_id', $userId)
-            ->get();
-        return $userPosts;
-    }
+//    public function index(string $userId)
+//    {
+//        Log::debug('slug', 'ok');
+//        $userPosts = Post::query()
+//            ->where('author_id', $userId)
+//            ->get();
+//        return $userPosts;
+//    }
 
     /**
      * Show the form for creating a new resource.

@@ -30,7 +30,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('refresh', 'refresh');
 });
 Route::apiResource('/user/posts', \App\Http\Controllers\Posts\UserPostController::class);
-Route::get('/user/posts/{userId}', [\App\Http\Controllers\Posts\UserPostController::class, 'getPostsById'])->name('posts.users');
+//Route::get('/posts/by_user_id/{userId}', [\App\Http\Controllers\Posts\PostControllerById::class, 'getPostsById'])->name('posts.users');
 //Route::post('/user/uploadFiles', [UploadFileController::class, 'saveFile'])->name('upload.files.save.file');
 Route::get('admin/users', [AdminUserController::class, 'index'])->name('api.admin.users.index');
 
