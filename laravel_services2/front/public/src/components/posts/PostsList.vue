@@ -2,7 +2,7 @@
 import {useReadPostsStore} from "../../stores/readPostsStore";
 import {useAuthStore} from "../../stores/auth.store";
 import {onMounted} from "vue";
-import {useMyPostsById} from "@/stores/myPostsStoreById";
+import {useMyPostsById} from "../../stores/myPostsStoreById";
 
 const readPostStore = useReadPostsStore()
 const authStore = useAuthStore();
