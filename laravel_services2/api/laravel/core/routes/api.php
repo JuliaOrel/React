@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\Posts\UploadFileController;
+use App\Http\Controllers\Posts\UserPostController;
 use App\Http\Controllers\Users\AdminUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
