@@ -1,6 +1,6 @@
 import {toast} from "vue3-toastify";
-import myLocalStorage from "@/helpers/myLocalStorage";
-import myLog from "@/helpers/myLog";
+import myLocalStorage from "../helpers/myLocalStorage";
+import myLog from "../helpers/myLog";
 
 export default function (url, options = {}) {
 
