@@ -19,7 +19,7 @@ export const useMyPostsById = defineStore('myPost', {
                     this.posts = res.data
                     console.log(res.data)
                     this.isPreload = false
-                    // console.log(res)
+                    console.log(res)
                 })
                 .catch(err=> {
                     myLog(err)

@@ -23,10 +23,10 @@ class UserPostController extends Controller
     public function index(Request $request)
     {
         Log::debug('slug', 'ok');
-        $userId=$request->user()->id;
+        $userId = $request->user()->id;
         $userPosts = Post::query()
             ->where('author_id', $userId)
-            ->get();
+            ->paginate($request->input('perPage', 10));
         return $userPosts;
     }
 
