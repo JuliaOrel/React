@@ -2,7 +2,6 @@
 import {useReadPostsStore} from "../../stores/readPostsStore";
 import {useAuthStore} from "../../stores/auth.store";
 import {onMounted} from "vue";
-import myFetch from "@/helpers/myFetch";
 import {useMyPostsById} from "@/stores/myPostsStoreById";
 
 const readPostStore = useReadPostsStore()
@@ -13,7 +12,7 @@ onMounted(() => {
 })
 
 const fetchUserPosts =() => {
-    myPosts.loadPosts(authStore.user.id);
+    myPosts.loadPosts();
 };
 </script>
 

@@ -7,9 +7,9 @@ export const useMyPostsById = defineStore('myPost', {
     state: () => ({
         isPreload: false, posts: []
     }), actions: {
-        loadPosts(userId) {
+        loadPosts() {
             this.isPreload = true
-            myFetch(`/api/user/posts/${userId}`)
+            myFetch(`/api/user/posts`)
                 .then(res => {
                     this.posts = res.data
                     console.log(res.data)

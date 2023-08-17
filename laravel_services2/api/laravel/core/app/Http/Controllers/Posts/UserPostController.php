@@ -16,9 +16,10 @@ class UserPostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function getPostsById(string $userId)
+    public function index(Request $request)
     {
         Log::debug('slug', 'ok');
+        $userId=$request->user()->id;
         $userPosts = Post::query()
             ->where('author_id', $userId)
             ->get();
