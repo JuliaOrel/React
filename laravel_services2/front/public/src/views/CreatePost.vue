@@ -1,17 +1,14 @@
 <script setup>
 
 
-import {useAuthStore} from "../stores/auth.store";
-
-import myFetch from "../helpers/myFetch";
 import myLocalStorage from "../helpers/myLocalStorage";
 
-const authStore = useAuthStore();
+
 const post = {
     title: "",
     img_url: null,
     body: "",
-    author_id: authStore.user.id,
+    author_id: "",
     slug: "",
 };
 

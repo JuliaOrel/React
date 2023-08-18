@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CreatePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -65,7 +64,7 @@ class UserPostController extends Controller
         $p->setAttribute('title', $request->input('title'));
         $p->setAttribute('slug',
             Str::slug($request->input('slug', date('Y-m-d')), '-'));
-        $p->setAttribute('author_id', $request->input('author_id'));
+        $p->setAttribute('author_id', $request->user()->id);
         $p->setAttribute('body', $request->input('body'));
         $p->setAttribute('img_url', $imagePath);
 
