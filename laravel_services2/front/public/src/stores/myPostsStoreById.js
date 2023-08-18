@@ -10,7 +10,8 @@ export const useMyPostsById = defineStore('myPost', {
     }), actions: {
         loadPosts() {
             this.isPreload = true
-            myFetch(`/api/user/posts`, {
+            console.log(myLocalStorage.getItem('token'))
+            fetch(`/api/user/posts`, {
                 headers:{
                     'Authorization':`Bearer ${myLocalStorage.getItem('token')}`
                 }
@@ -19,7 +20,7 @@ export const useMyPostsById = defineStore('myPost', {
                     this.posts = res.data
                     console.log(res.data)
                     this.isPreload = false
-                    console.log(res)
+                    //console.log(res)
                 })
                 .catch(err=> {
                     myLog(err)

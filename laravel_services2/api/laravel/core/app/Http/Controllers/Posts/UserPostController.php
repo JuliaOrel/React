@@ -13,16 +13,16 @@ use Illuminate\Support\Str;
 
 class UserPostController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
+//    public function __construct()
+//    {
+//        $this->middleware('auth:api');
+//    }
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        Log::debug('slug', 'ok');
+        //Log::debug('slug', 'ok');
         $userId = $request->user()->id;
         $userPosts = Post::query()
             ->where('author_id', $userId)
