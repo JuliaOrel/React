@@ -1,6 +1,6 @@
 import {defineStore} from "pinia";
-import myFetch from "@/helpers/myFetch";
-import myLog from "@/helpers/myLog";
+import myFetch from "../helpers/myFetch";
+import myLog from "../helpers/myLog";
 import {toast} from "vue3-toastify";
 import myLocalStorage from "../helpers/myLocalStorage";
 
@@ -11,10 +11,10 @@ export const useMyPostsById = defineStore('myPost', {
         loadPosts() {
             this.isPreload = true
             console.log(myLocalStorage.getItem('token'))
-            fetch(`/api/user/posts`, {
-                headers:{
-                    'Authorization':`Bearer ${myLocalStorage.getItem('token')}`
-                }
+            myFetch(`/api/user/posts`, {
+                // headers:{
+                //     'Authorization':`Bearer ${myLocalStorage.getItem('token')}`
+                // }
             })
                 .then(res => {
                     this.posts = res.data

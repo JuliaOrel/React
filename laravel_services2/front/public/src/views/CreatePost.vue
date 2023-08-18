@@ -2,7 +2,8 @@
 
 
 import {useAuthStore} from "../stores/auth.store";
-import myLocalStorage from "../helpers/myLocalStorage";
+
+import myFetch from "../helpers/myFetch";
 
 const authStore = useAuthStore();
 const post = {
@@ -28,13 +29,13 @@ async function addPost() {
         frmData.append('author_id', post.author_id);
         frmData.append('slug', post.slug);
 
-         fetch('/api/user/posts', {
+         myFetch('/api/user/posts', {
              method: 'POST',
              body: frmData,
 
-             headers: {
-                 'Authorization':`Bearer ${myLocalStorage.getItem('token')}`
-             }
+             // headers: {
+             //     'Authorization':`Bearer ${myLocalStorage.getItem('token')}`
+             // }
         })
             .then(res => {
                 console.log(res)
