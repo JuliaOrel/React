@@ -17,7 +17,7 @@ const fetchUserPosts =() => {
 </script>
 
 <template>
-    <div v-if="readPostStore.isPreload && !myPosts.isPreload && !myPosts.isPosts">
+    <div v-if="readPostStore.isPreload && !myPosts.isPreload && !myPosts.isPosts|| myPosts.isPreload">
         Loading
     </div>
     <ul v-else-if="!readPostStore.isPreload && !myPosts.isPreload && !myPosts.isPosts">
@@ -28,7 +28,7 @@ const fetchUserPosts =() => {
 
         </li>
     </ul>
-        <ul v-else-if="myPosts.isPosts">
+        <ul v-else>
             <li v-for="post in myPosts.posts" :key="post.id">
                 <h2>{{ post.title }}</h2>
                 <img :src="post.img_url" width="100">
