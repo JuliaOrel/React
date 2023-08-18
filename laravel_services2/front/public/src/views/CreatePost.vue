@@ -2,6 +2,7 @@
 
 
 import {useAuthStore} from "../stores/auth.store";
+import myLocalStorage from "../helpers/myLocalStorage";
 
 const authStore = useAuthStore();
 const post = {
@@ -30,9 +31,10 @@ async function addPost() {
          fetch('/api/user/posts', {
              method: 'POST',
              body: frmData,
-             // headers: {
-             //     'Content-Type': 'multipart/form-data'
-             // }
+
+             headers: {
+                 'Authorization':`Bearer ${myLocalStorage.getItem('token')}`
+             }
         })
             .then(res => {
                 console.log(res)
