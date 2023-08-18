@@ -17,10 +17,10 @@ const fetchUserPosts =() => {
 </script>
 
 <template>
-    <div v-if="readPostStore.isPreload">
+    <div v-if="readPostStore.isPreload && !myPosts.isPreload && !myPosts.isPosts">
         Loading
     </div>
-    <ul v-else>
+    <ul v-else-if="!readPostStore.isPreload && !myPosts.isPreload && !myPosts.isPosts">
         <li v-for="post in readPostStore.posts" :key="post.id">
             <h2>{{ post.title }}</h2>
             <img :src="post.img_url" width="100">
@@ -28,7 +28,15 @@ const fetchUserPosts =() => {
 
         </li>
     </ul>
-    <div>
+        <ul v-else-if="myPosts.isPosts">
+            <li v-for="post in myPosts.posts" :key="post.id">
+                <h2>{{ post.title }}</h2>
+                <img :src="post.img_url" width="100">
+                <p>{{ post.body }}</p>
+
+            </li>
+        </ul>
+        <div>
         <button v-if="authStore.isLogin" type="button" class="btn btn-secondary"><RouterLink to="/createposts">Add Recipe</RouterLink></button>
         <div v-if="authStore.isLogin">
             <button class="btn btn-secondary" @click="fetchUserPosts">Загрузить мои посты</button>
