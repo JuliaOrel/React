@@ -1,5 +1,5 @@
 .idea
-xampp8/volumes
+symfony/volumes
 vendor
 composer.lock
 .env

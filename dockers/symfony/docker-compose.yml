@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  app.monolith:
+    container_name: app.monolith
+    ports:
+      - "80:8000"
+    build:
+      context: ./monolith
+      dockerfile: Dockerfile
+    networks:
+      - symfony
+
+  db.phpmyadmin:
+        image: phpmyadmin
+        ports:
+          - "3030:80"
+        environment:
+          - PMA_HOST=db.mysql
+          - PMA_PORT=3306
+        networks:
+          - symfony
+  db.mysql:
+        container_name: db.mysql
+        build:
+          context: ./dockers/mysql
+          dockerfile: Dockerfile
+        ports:
+          - "3306:3306"
+        volumes:
+            - ./volumes/db/mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+        networks:
+            - symfony
+
+networks:
+  symfony:
+        driver: bridge
