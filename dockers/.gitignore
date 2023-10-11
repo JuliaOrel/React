@@ -1,0 +1,5 @@
+.idea
+xampp8/volumes
+vendor
+composer.lock
+.env
