@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-  monolith:
-    container_name: monolith
+  monolith.app:
+    container_name: monolith.app
       # Операция подключит внешний носитель
     # но в то же самое время - затрет все изменения
     # Которые были произведены в момент сборки контейнера

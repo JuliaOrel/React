@@ -1,0 +1,14 @@
+{
+    "name": "user/src",
+    "autoload": {
+        "psr-4": {
+            "User\\Src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Yuliia"
+        }
+    ],
+    "require": {}
+}
